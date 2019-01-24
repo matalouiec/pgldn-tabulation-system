@@ -44,6 +44,9 @@ Route::get('/judge-dashboard/category/criteria/{category}', 'JudgeDashboard@getC
 Route::post('/judge-dashboard/rating','JudgeDashboard@createRatingHeader')->middleware('auth');
 Route::post('/judge-dashboard/rating-entries','JudgeDashboard@saveRatingEntries')->middleware('auth');
 
+// Judges Category
+Route::get('/judge-category/{id}','JudgeCategory@index')->middleware('auth');
+
 //Judges Scoreboard
 Route::get('/scoreboard','ScoreBoardController@index')->middleware('auth');
 Route::get('/scoreboard/getCategories','ScoreBoardController@getScoredCategories')->middleware('auth');

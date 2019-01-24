@@ -1,63 +1,67 @@
 <template>
-    <div class="col-md-3">
-        <a class="thumbnail" data-toggle="modal" :data-target="'#myModal'+contestant.id+category.id">
-            <div id="seqno"><span class="no">{{ contestant.number }}</span></div>
-            <center>
-                <img :src="'/storage/cover_image/'+contestant.cover_image" class="img-fluid" width="200" height="150" :alt="contestant.name" />
-                <h2>{{ contestant.name }}</h2><span>({{ contestant.representing }})</span>
-            </center>
-        </a>
-        <scoresheet-component :contestant="contestant" :category="category"></scoresheet-component>
+  <div class="col-md-3">
+    <div
+      class="card border-success mb-3"
+      data-toggle="modal"
+      :data-target="'#myModal'+contestant.id+category.id"
+    >
+      <center class="contestant-label">
+        <img
+          :src="'/storage/cover_image/'+contestant.cover_image"
+          class="img-thumbnail"
+          :alt="contestant.name"
+        >
+        <span class="label-name">#{{ contestant.number }} - {{ contestant.name }}</span>
+        <br>
+        <span class="label-address">({{ contestant.representing }})</span>
+      </center>
     </div>
+    <scoresheet-component :contestant="contestant" :category="category"></scoresheet-component>
+  </div>
 </template>
 <script>
-    module.exports = {
-        props: ['contestant','category'],
-        methods:{
-            fetch(){
-                this.$parent.fetchCategory();
-            }
-        }
+module.exports = {
+  props: ["contestant", "category"],
+  methods: {
+    fetch() {
+      this.$parent.fetchCategory();
     }
+  }
+};
 </script>
 <style scoped>
-    img{
-        margin-top:10px;
-        margin-bottom:10px;
-    }
+.contestant-label {
+  margin-bottom: 10px;
+}
 
-    .thumbnail{
-        display: block;
-        margin-top: 10px;
-        border: 1px solid #0001;
-        width: 290px;
-        height:350px;
-    }
+.label-name {
+  font-size: 1.4vw;
+  font-weight: bolder;
+}
 
-    .thumbnail h2{
-        font-size: 20px;
-        font-weight: bold;
-    }
+.label-address {
+  font-size: 1vw;
+}
 
-    .thumbnail h2 span{
-        color: red;
-    }
+img {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: auto;
+}
 
-    #seqno{
-        height: 30px;
-        width: 30px;
-        position: absolute;
-    }
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 
-    #seqno span{
-        font-size: 17px;
-        font-weight:bold;
-        margin-left:12px;
-    }
-    .no{
-        font-weight: bolder;
-    }
-    a{
-        text-decoration: none;
-    }
+.container {
+  padding: 2px 16px;
+}
 </style>

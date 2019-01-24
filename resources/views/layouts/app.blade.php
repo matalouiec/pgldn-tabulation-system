@@ -7,14 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ env('app_name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 
     <!-- Styles -->
@@ -22,11 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name','') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,7 +44,17 @@
                                     </div>
                                 </li>
                             @else
-                                <li><a style="color:#f8f8ff;" href="{{ url('/judge-dashboard') }}">Dashboard</a></li>
+                                <li><a class="nav-link" href="{{ url('/judge-dashboard') }}">Dashboard</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary Round</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('/judge-category/1') }}">Swim Wear</a>
+                                        <a class="dropdown-item" href="#">Cocktail Dress</a>
+                                        <a class="dropdown-item" href="#">Festival Costume</a>
+                                        <a class="dropdown-item" href="#">Maranao Inspired Gown</a>
+                                    </div>
+                                </li>
+                                <li><a class="nav-link" href="#">Final Round</a></li>
                             @endcan
                         @endif
                     </ul>

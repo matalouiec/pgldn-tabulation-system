@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">List of Categories</div>
+                <div class="panel-heading">Categories</div>
                 <div class="panel-body">
                     @include('includes.messages')
-                    <a href="{{ url('/category/create') }}" class='btn btn-primary'><span class="glyphicon glyphicon-plus"></span> Add New</a>
+                    <a href="{{ url('/category/create') }}" class='btn btn-primary'><span class="glyphicon glyphicon-plus"></span> Add New</a><br /><br>
                     @if (count($categories)>0)
                         <table class="table table-striped">
                             <thead>

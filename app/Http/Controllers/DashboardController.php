@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Gate as Gate;
-use Auth;
 use Illuminate\Http\Request;
+use Auth;
 
 class DashboardController extends Controller
 {
