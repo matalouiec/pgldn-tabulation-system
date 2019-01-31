@@ -20,8 +20,7 @@
               </div>
               <div v-else>
                 <center>
-                  Please proceed to
-                  <a href="/scoreboard">My Scoreboard</a> to finalize all your scores.
+                  <a :href="'/judge-category/'+category.id" class="btn btn-info">VIEW SCORES</a>
                 </center>
               </div>
             </div>

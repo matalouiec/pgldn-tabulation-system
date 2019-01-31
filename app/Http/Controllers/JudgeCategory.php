@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class JudgeCategory extends Controller
 {
@@ -11,8 +12,12 @@ class JudgeCategory extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $req)
+    public function index(Request $request)
     {
-        return view('judges.judge-category');
+        if(isset($request->id)){
+            $category = Category::find($request->id);
+            return view('judges.judge-category',['category' => $category]);
+        }
     }
+
 }

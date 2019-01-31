@@ -48,10 +48,9 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary Round</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ url('/judge-category/1') }}">Swim Wear</a>
-                                        <a class="dropdown-item" href="#">Cocktail Dress</a>
-                                        <a class="dropdown-item" href="#">Festival Costume</a>
-                                        <a class="dropdown-item" href="#">Maranao Inspired Gown</a>
+                                        @foreach( App\Category::where('levelid','3')->orderBy('name')->get(['id','name']) as $category )
+                                            <a class="dropdown-item" href="{{ url('/judge-category/'.$category->id) }}">{{ $category->name }}</a>
+                                        @endforeach
                                     </div>
                                 </li>
                                 <li><a class="nav-link" href="#">Final Round</a></li>
