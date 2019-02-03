@@ -16,6 +16,10 @@ class JudgeCategory extends Controller
     {
         if(isset($request->id)){
             $category = Category::find($request->id);
+            if(is_null($category))
+            {
+                // todo: create error page for unknown routes
+            }
             return view('judges.judge-category',['category' => $category]);
         }
     }
