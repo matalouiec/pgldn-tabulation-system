@@ -5157,70 +5157,6 @@ module.exports = Element;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(2);
-var helpers = __webpack_require__(1);
-var layouts = __webpack_require__(12);
-
-module.exports = {
-	// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
-	// use the new chart options to grab the correct scale
-	constructors: {},
-	// Use a registration function so that we can move to an ES6 map when we no longer need to support
-	// old browsers
-
-	// Scale config defaults
-	defaults: {},
-	registerScaleType: function(type, scaleConstructor, scaleDefaults) {
-		this.constructors[type] = scaleConstructor;
-		this.defaults[type] = helpers.clone(scaleDefaults);
-	},
-	getScaleConstructor: function(type) {
-		return this.constructors.hasOwnProperty(type) ? this.constructors[type] : undefined;
-	},
-	getScaleDefaults: function(type) {
-		// Return the scale defaults merged with the global settings so that we always use the latest ones
-		return this.defaults.hasOwnProperty(type) ? helpers.merge({}, [defaults.scale, this.defaults[type]]) : {};
-	},
-	updateScaleDefaults: function(type, additions) {
-		var me = this;
-		if (me.defaults.hasOwnProperty(type)) {
-			me.defaults[type] = helpers.extend(me.defaults[type], additions);
-		}
-	},
-	addScalesToLayout: function(chart) {
-		// Adds each scale to the chart.boxes array to be sized accordingly
-		helpers.each(chart.scales, function(scale) {
-			// Set ILayoutItem parameters for backwards compatibility
-			scale.fullWidth = scale.options.fullWidth;
-			scale.position = scale.options.position;
-			scale.weight = scale.options.weight;
-			layouts.addBox(chart, scale);
-		});
-	}
-};
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {};
-module.exports.Arc = __webpack_require__(204);
-module.exports.Line = __webpack_require__(205);
-module.exports.Point = __webpack_require__(206);
-module.exports.Rectangle = __webpack_require__(207);
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -5302,7 +5238,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -5527,6 +5463,70 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__(2);
+var helpers = __webpack_require__(1);
+var layouts = __webpack_require__(12);
+
+module.exports = {
+	// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
+	// use the new chart options to grab the correct scale
+	constructors: {},
+	// Use a registration function so that we can move to an ES6 map when we no longer need to support
+	// old browsers
+
+	// Scale config defaults
+	defaults: {},
+	registerScaleType: function(type, scaleConstructor, scaleDefaults) {
+		this.constructors[type] = scaleConstructor;
+		this.defaults[type] = helpers.clone(scaleDefaults);
+	},
+	getScaleConstructor: function(type) {
+		return this.constructors.hasOwnProperty(type) ? this.constructors[type] : undefined;
+	},
+	getScaleDefaults: function(type) {
+		// Return the scale defaults merged with the global settings so that we always use the latest ones
+		return this.defaults.hasOwnProperty(type) ? helpers.merge({}, [defaults.scale, this.defaults[type]]) : {};
+	},
+	updateScaleDefaults: function(type, additions) {
+		var me = this;
+		if (me.defaults.hasOwnProperty(type)) {
+			me.defaults[type] = helpers.extend(me.defaults[type], additions);
+		}
+	},
+	addScalesToLayout: function(chart) {
+		// Adds each scale to the chart.boxes array to be sized accordingly
+		helpers.each(chart.scales, function(scale) {
+			// Set ILayoutItem parameters for backwards compatibility
+			scale.fullWidth = scale.options.fullWidth;
+			scale.position = scale.options.position;
+			scale.weight = scale.options.weight;
+			layouts.addBox(chart, scale);
+		});
+	}
+};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {};
+module.exports.Arc = __webpack_require__(204);
+module.exports.Line = __webpack_require__(205);
+module.exports.Point = __webpack_require__(206);
+module.exports.Rectangle = __webpack_require__(207);
 
 
 /***/ }),
@@ -46233,7 +46233,7 @@ exports.positioners = positioners;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(160);
-module.exports = __webpack_require__(304);
+module.exports = __webpack_require__(325);
 
 
 /***/ }),
@@ -46279,11 +46279,16 @@ Vue.component('rounds', __webpack_require__(289));
 Vue.component('round', __webpack_require__(292));
 Vue.component('rounds-modal', __webpack_require__(295));
 
-//Preliminary Round
-Vue.component('preliminary-round', __webpack_require__(298));
+// Scoreboard per category
+Vue.component('cocktail-dress', __webpack_require__(298));
+Vue.component('cocktail-dress-rank', __webpack_require__(303));
+Vue.component('festival-costume', __webpack_require__(306));
+Vue.component('festival-costume-rank', __webpack_require__(311));
+Vue.component('swim-wear', __webpack_require__(314));
+Vue.component('swim-wear-rank', __webpack_require__(319));
 
 // Utilities
-Vue.component('msgbox', __webpack_require__(301));
+Vue.component('msgbox', __webpack_require__(322));
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_notification___default.a, { velocity: __WEBPACK_IMPORTED_MODULE_1_velocity_animate___default.a });
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* default */]);
 
@@ -83756,13 +83761,13 @@ Chart.Animation = __webpack_require__(30);
 Chart.animationService = __webpack_require__(31);
 Chart.defaults = __webpack_require__(2);
 Chart.Element = __webpack_require__(6);
-Chart.elements = __webpack_require__(8);
+Chart.elements = __webpack_require__(10);
 Chart.Interaction = __webpack_require__(32);
 Chart.layouts = __webpack_require__(12);
 Chart.platform = __webpack_require__(33);
 Chart.plugins = __webpack_require__(34);
 Chart.Scale = __webpack_require__(13);
-Chart.scaleService = __webpack_require__(7);
+Chart.scaleService = __webpack_require__(9);
 Chart.Ticks = __webpack_require__(14);
 Chart.Tooltip = __webpack_require__(35);
 
@@ -84511,7 +84516,7 @@ module.exports = {
 var color = __webpack_require__(29);
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 
 module.exports = function() {
 
@@ -87359,7 +87364,7 @@ var Interaction = __webpack_require__(32);
 var layouts = __webpack_require__(12);
 var platform = __webpack_require__(33);
 var plugins = __webpack_require__(34);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 var Tooltip = __webpack_require__(35);
 
 module.exports = function(Chart) {
@@ -88859,7 +88864,7 @@ module.exports = function(Chart) {
 
 
 var Scale = __webpack_require__(13);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 
 module.exports = function() {
 
@@ -89002,7 +89007,7 @@ module.exports = function() {
 
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
 
 module.exports = function(Chart) {
@@ -89201,7 +89206,7 @@ module.exports = function(Chart) {
 
 var helpers = __webpack_require__(1);
 var Scale = __webpack_require__(13);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
 
 /**
@@ -89557,7 +89562,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 var Ticks = __webpack_require__(14);
 
 module.exports = function(Chart) {
@@ -90099,7 +90104,7 @@ moment = typeof moment === 'function' ? moment : window.moment;
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
 var Scale = __webpack_require__(13);
-var scaleService = __webpack_require__(7);
+var scaleService = __webpack_require__(9);
 
 // Integer constants are from the ES6 spec.
 var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991;
@@ -91153,7 +91158,7 @@ webpackContext.id = 218;
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('bar', {
@@ -91641,7 +91646,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('bubble', {
@@ -91821,7 +91826,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('doughnut', {
@@ -92129,7 +92134,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('line', {
@@ -92480,7 +92485,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('polarArea', {
@@ -92742,7 +92747,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('radar', {
@@ -93102,7 +93107,7 @@ module.exports.title = __webpack_require__(236);
 
 
 var defaults = __webpack_require__(2);
-var elements = __webpack_require__(8);
+var elements = __webpack_require__(10);
 var helpers = __webpack_require__(1);
 
 defaults._set('global', {
@@ -95566,7 +95571,7 @@ var content = __webpack_require__(254);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("3d2df712", content, false, {});
+var update = __webpack_require__(8)("3d2df712", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -95585,7 +95590,7 @@ if(false) {
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -95745,7 +95750,7 @@ var render = function() {
                               {
                                 staticClass: "btn btn-info",
                                 attrs: {
-                                  href: "/judge-category/" + category.id
+                                  href: "/judge-category/cocktail-dress"
                                 }
                               },
                               [_vm._v("VIEW SCORES")]
@@ -95845,7 +95850,7 @@ var content = __webpack_require__(260);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("cde19504", content, false, {});
+var update = __webpack_require__(8)("cde19504", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -95864,7 +95869,7 @@ if(false) {
 /* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -96519,7 +96524,7 @@ var content = __webpack_require__(265);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("46c13a4e", content, false, {});
+var update = __webpack_require__(8)("46c13a4e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -96538,7 +96543,7 @@ if(false) {
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -96927,34 +96932,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            rankList: []
-        };
-    },
+  data: function data() {
+    return {
+      rankList: []
+    };
+  },
 
-    methods: {
-        getRank: function getRank() {
-            var _this = this;
+  methods: {
+    getRank: function getRank() {
+      var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/scoreboard/rank').then(function (response) {
-                _this.rankList = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-    },
-    created: function created() {
-        var _this2 = this;
-
-        this.getRank();
-        setInterval(function () {
-            _this2.getRank();
-        }, 2000);
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/scoreboard/rank").then(function (response) {
+        _this.rankList = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.getRank();
+    setInterval(function () {
+      _this2.getRank();
+    }, 2000);
+  }
 });
 
 /***/ }),
@@ -97137,7 +97146,7 @@ var content = __webpack_require__(276);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("23adfa2c", content, false, {});
+var update = __webpack_require__(8)("23adfa2c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -97156,7 +97165,7 @@ if(false) {
 /* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -97405,7 +97414,7 @@ var content = __webpack_require__(281);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("54c10f22", content, false, {});
+var update = __webpack_require__(8)("54c10f22", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -97424,12 +97433,12 @@ if(false) {
 /* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\nimg[data-v-474fcd14]{\n    margin-top:10px;\n    margin-bottom:10px;\n    /* border: 2px solid #acb0b7; */\n    height: 80%;\n    width: 80%;\n}\n#seqno[data-v-474fcd14]{\n    height: 30px;\n    width: 30px;\n    background: url('/storage/img/star.png') no-repeat;\n    position: absolute;\n}\n#seqno span[data-v-474fcd14]{\n    font-size: 17px;\n    font-weight:bold;\n    margin-left:12px;\n}\n", ""]);
+exports.push([module.i, "\nimg[data-v-474fcd14] {\r\n  margin-top: 10px;\r\n  margin-bottom: 10px;\r\n  /* border: 2px solid #acb0b7; */\r\n  height: 80%;\r\n  width: 80%;\n}\n#seqno[data-v-474fcd14] {\r\n  height: 30px;\r\n  width: 30px;\r\n  background: url(\"/storage/img/star.png\") no-repeat;\r\n  position: absolute;\n}\n#seqno span[data-v-474fcd14] {\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  margin-left: 12px;\n}\r\n", ""]);
 
 // exports
 
@@ -97487,53 +97496,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['rating'],
-    data: function data() {
-        return {
-            ratingEntries: [],
-            totalScore: 0,
-            params: {
-                title: 'Information',
-                message: 'Final scores can no longer be modified. Please contact the system administrator.',
-                type: 'info'
-            },
-            data: {
-                id: '01'
-            }
-        };
-    },
-    created: function created() {
-        this.fetchRatingEntries();
-    },
-    mounted: function mounted() {
-        var _this = this;
+  props: ["rating"],
+  data: function data() {
+    return {
+      ratingEntries: [],
+      totalScore: 0,
+      params: {
+        title: "Warning!",
+        message: "Final scores can no longer be modified. Please contact the official tabulator.",
+        type: "info"
+      },
+      data: {
+        id: "01"
+      }
+    };
+  },
+  created: function created() {
+    this.fetchRatingEntries();
+  },
+  mounted: function mounted() {
+    var _this = this;
 
-        setInterval(function () {
-            _this.computeTotalScore();
-        }, 2000);
+    setInterval(function () {
+      _this.computeTotalScore();
+    }, 2000);
+  },
+
+  methods: {
+    fetchRatingEntries: function fetchRatingEntries() {
+      var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/scoreboard/rating-entries/" + this.rating.id).then(function (response) {
+        _this2.ratingEntries = response.data.ratingentries;
+        _this2.computeTotalScore();
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
-
-    methods: {
-        fetchRatingEntries: function fetchRatingEntries() {
-            var _this2 = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/scoreboard/rating-entries/' + this.rating.id).then(function (response) {
-                _this2.ratingEntries = response.data.ratingentries;
-                _this2.computeTotalScore();
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        computeTotalScore: function computeTotalScore() {
-            this.totalScore = 0;
-            for (var i = 0; i < this.ratingEntries.length; i++) {
-                this.totalScore = parseFloat(this.totalScore) + parseFloat(this.ratingEntries[i].acquired_rating);
-            }
-        }
+    computeTotalScore: function computeTotalScore() {
+      this.totalScore = 0;
+      for (var i = 0; i < this.ratingEntries.length; i++) {
+        this.totalScore = parseFloat(this.totalScore) + parseFloat(this.ratingEntries[i].acquired_rating);
+      }
     }
+  }
 });
 
 /***/ }),
@@ -97546,7 +97580,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-4" },
+    { staticClass: "col-md-4", staticStyle: { "margin-bottom": "5px" } },
     [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-12" }, [
@@ -97554,17 +97588,17 @@ var render = function() {
             _c("div", { staticClass: "card-header clearfix" }, [
               _c("div", { staticClass: "card-title" }, [
                 _vm._v(
-                  "#" +
+                  "\n            #" +
                     _vm._s(_vm.rating.number) +
                     " - " +
                     _vm._s(_vm.rating.name) +
-                    "\n                        "
+                    "\n            "
                 ),
                 _vm.rating.is_final != 1
                   ? _c(
                       "button",
                       {
-                        staticClass: "btn btn-warning float-sm-right",
+                        staticClass: "btn btn-success float-sm-right",
                         attrs: {
                           title: "Modify",
                           "data-toggle": "modal",
@@ -97577,15 +97611,13 @@ var render = function() {
                           staticClass: "glyphicon glyphicon-pencil",
                           attrs: { "aria-hidden": "true" }
                         }),
-                        _vm._v(
-                          "\n                            EDIT\n                        "
-                        )
+                        _vm._v("\n              EDIT\n            ")
                       ]
                     )
                   : _c(
                       "button",
                       {
-                        staticClass: "btn btn-success float-sm-right",
+                        staticClass: "btn btn-danger float-sm-right",
                         attrs: {
                           title: "Final",
                           "aria-label": "Left Align",
@@ -97598,9 +97630,7 @@ var render = function() {
                           staticClass: "glyphicon glyphicon-ok",
                           attrs: { "aria-hidden": "true" }
                         }),
-                        _vm._v(
-                          "\n                             FINAL\n                        "
-                        )
+                        _vm._v("\n              LOCKED\n            ")
                       ]
                     )
               ])
@@ -97635,18 +97665,25 @@ var render = function() {
                           {
                             key: ratingentry.id,
                             staticClass:
-                              "list-group-item d-flex justify-content-between align-items-center"
+                              "list-group-item d-flex justify-content-between align-items-center",
+                            staticStyle: { "font-size": "0.9em" }
                           },
                           [
                             _vm._v(
-                              "\n                                    " +
+                              "\n                  " +
                                 _vm._s(ratingentry.criteria_name) +
-                                "\n                                    "
+                                "\n                  "
                             ),
                             _c(
                               "span",
                               { staticClass: "badge badge-primary badge-pill" },
-                              [_vm._v(_vm._s(ratingentry.acquired_rating))]
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    parseFloat(ratingentry.acquired_rating)
+                                  )
+                                )
+                              ]
                             )
                           ]
                         )
@@ -97760,7 +97797,7 @@ var content = __webpack_require__(286);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("01e8a837", content, false, {});
+var update = __webpack_require__(8)("01e8a837", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -97779,12 +97816,12 @@ if(false) {
 /* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\nimg[data-v-66f7fbae]{\n  height: 70%;\n  width: 70%;\n}\n.slider[data-v-66f7fbae] {\n -webkit-appearance: none;\n width: 100%;\n height: 7px;\n margin-top:10px;\n border-radius: 5px;\n background: #006865;\n outline: none;\n opacity: 0.7;\n -webkit-transition: .2s;\n -webkit-transition: opacity .2s;\n transition: opacity .2s;\n}\n.slider[data-v-66f7fbae]:hover {\n     opacity: 10;\n}\n.slider[data-v-66f7fbae]::-webkit-slider-thumb {\n     -webkit-appearance: none;\n     appearance: none;\n     width: 48px;\n     height: 48px;\n     background: url('/storage/img/flower.png') no-repeat;\n     cursor: pointer;\n}\n.slider[data-v-66f7fbae]::-moz-range-thumb {\n     width: 48px;\n     height: 48px;\n     background: url('/storage/img/flower.png') no-repeat;\n     cursor: pointer;\n}\n.criteria[data-v-66f7fbae]{\n   color:#000;\n   font-weight:bold;\n}\n#txtScore[data-v-66f7fbae]{\n   -webkit-box-ordinal-group: none;\n       -ms-flex-order: none;\n           order: none;\n   border-color: transparent;  \n   font-weight:bold;\n   font-size:20px;\n}\n.modal-lg[data-v-66f7fbae] {\n   max-width: 75% !important;\n}\n.error_label[data-v-66f7fbae]{\n   color: red;\n   font-size: 20px;\n   font-weight: bold;\n}\n.error_input[data-v-66f7fbae]{\n   color: red;\n}\n", ""]);
+exports.push([module.i, "\nimg[data-v-66f7fbae] {\r\n  height: 70%;\r\n  width: 70%;\n}\n.slider[data-v-66f7fbae] {\r\n  -webkit-appearance: none;\r\n  width: 100%;\r\n  height: 7px;\r\n  margin-top: 10px;\r\n  border-radius: 5px;\r\n  background: #006865;\r\n  outline: none;\r\n  opacity: 0.7;\r\n  -webkit-transition: 0.2s;\r\n  -webkit-transition: opacity 0.2s;\r\n  transition: opacity 0.2s;\n}\n.slider[data-v-66f7fbae]:hover {\r\n  opacity: 10;\n}\n.slider[data-v-66f7fbae]::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  appearance: none;\r\n  width: 48px;\r\n  height: 48px;\r\n  cursor: pointer;\n}\n.slider[data-v-66f7fbae]::-moz-range-thumb {\r\n  width: 48px;\r\n  height: 48px;\r\n  cursor: pointer;\n}\n.criteria[data-v-66f7fbae] {\r\n  color: #000;\r\n  font-weight: bold;\n}\n#txtScore[data-v-66f7fbae] {\r\n  -webkit-box-ordinal-group: none;\r\n      -ms-flex-order: none;\r\n          order: none;\r\n  border-color: transparent;\r\n  font-weight: bold;\r\n  font-size: 20px;\n}\n.modal-lg[data-v-66f7fbae] {\r\n  max-width: 75% !important;\n}\n.error_label[data-v-66f7fbae] {\r\n  color: red;\r\n  font-size: 20px;\r\n  font-weight: bold;\n}\n.error_input[data-v-66f7fbae] {\r\n  color: red;\n}\r\n", ""]);
 
 // exports
 
@@ -97869,10 +97906,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['rating', 'ratingEntries'],
+  props: ["rating", "ratingEntries"],
   data: function data() {
     return {
       totalScore: 0,
@@ -97895,15 +97993,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       var id = this.rating.id;
       this.onFormSubmit();
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/scoreboard/finalize', {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/finalize", {
         id: id
       }).then(function (response) {
         if (response.status == 200 && response.data == true) {
           _this.$notify({
-            group: 'app-notification',
-            type: 'success',
-            title: 'Success!!!',
-            text: 'Your scores are finalized.'
+            group: "app-notification",
+            type: "success",
+            title: "Success!!!",
+            text: "Your scores are finalized."
           });
         }
       }).catch(function (err) {
@@ -97914,20 +98012,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.payload = {
-        'rating': this.rating,
-        'ratingEntries': this.ratingEntries,
-        'totalScore': this.totalScore
+        rating: this.rating,
+        ratingEntries: this.ratingEntries,
+        totalScore: this.totalScore
       };
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/scoreboard/rating', {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/rating", {
         payload: this.payload
       }).then(function (response) {
         if (response.status == 200 && response.data == true) {
           _this2.$notify({
-            group: 'app-notification',
-            type: 'success',
-            title: 'Success!!!',
-            text: 'Your scores are saved.'
+            group: "app-notification",
+            type: "success",
+            title: "Success!!!",
+            text: "Your scores are saved."
           });
         }
       }).catch(function (err) {
@@ -98023,37 +98121,41 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("br"),
+                        _vm._v(" "),
                         _c("span", { staticClass: "label label-primary" }, [
                           _vm._v("Name")
                         ]),
-                        _vm._v(" :  "),
+                        _vm._v(" :\n                "),
                         _c("span", { staticClass: "label label-warning" }, [
                           _vm._v(_vm._s(_vm.rating.name))
                         ]),
                         _vm._v(" "),
                         _c("br"),
+                        _vm._v(" "),
                         _c("span", { staticClass: "label label-primary" }, [
                           _vm._v("Age")
                         ]),
-                        _vm._v(" :  "),
+                        _vm._v(" :\n                "),
                         _c("span", { staticClass: "label label-warning" }, [
                           _vm._v(_vm._s(_vm.rating.age) + " years old")
                         ]),
                         _vm._v(" "),
                         _c("br"),
+                        _vm._v(" "),
                         _c("span", { staticClass: "label label-primary" }, [
                           _vm._v("Representing")
                         ]),
-                        _vm._v(" :  "),
+                        _vm._v(" :\n                "),
                         _c("span", { staticClass: "label label-warning" }, [
                           _vm._v(_vm._s(_vm.rating.representing))
                         ]),
                         _vm._v(" "),
                         _c("br"),
+                        _vm._v(" "),
                         _c("span", { staticClass: "label label-primary" }, [
                           _vm._v("Address")
                         ]),
-                        _vm._v(" :  "),
+                        _vm._v(" :\n                "),
                         _c("span", { staticClass: "label label-warning" }, [
                           _vm._v(_vm._s(_vm.rating.short_description))
                         ])
@@ -98070,8 +98172,22 @@ var render = function() {
                           return _c("tr", { key: entry.id }, [
                             _c(
                               "td",
-                              { staticStyle: { "padding-top": "10px" } },
-                              [_vm._v(_vm._s(entry.criteria_name))]
+                              {
+                                staticStyle: {
+                                  "padding-top": "10px",
+                                  width: "10em"
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "criteria",
+                                    staticStyle: { "font-size": "1vw" }
+                                  },
+                                  [_vm._v(_vm._s(entry.criteria_name))]
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _c("td", [
@@ -98090,7 +98206,7 @@ var render = function() {
                                     expression: "entry.acquired_rating"
                                   }
                                 ],
-                                staticClass: "slider",
+                                staticClass: "custom-range",
                                 staticStyle: { width: "350px" },
                                 attrs: {
                                   type: "range",
@@ -98254,7 +98370,7 @@ var render = function() {
                     staticClass: "glyphicon glyphicon-ok",
                     attrs: { "arial-hidden": "true" }
                   }),
-                  _vm._v("\n          Mark as Final\n        ")
+                  _vm._v("\n          Save & Lock\n        ")
                 ]
               )
             ])
@@ -98778,11 +98894,287 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(299)
+}
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(299)
+var __vue_script__ = __webpack_require__(301)
 /* template */
-var __vue_template__ = __webpack_require__(300)
+var __vue_template__ = __webpack_require__(302)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0c44faa8"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ScoreBoardCategory/CocktailDressComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c44faa8", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c44faa8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 299 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(300);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("2b0f0266", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c44faa8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CocktailDressComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c44faa8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CocktailDressComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul[data-v-0c44faa8] {\r\n  list-style-type: none;\r\n  float: left;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 301 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var cid = 18;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categories: [],
+      params: {
+        // this is for the modal window
+        message: "This will finalize all your scores on this category. Would you like to continue?",
+        title: "Confirm",
+        type: "confirm"
+      }
+    };
+  },
+
+  methods: {
+    onClickChild: function onClickChild(value) {
+      if (value.yes) {
+        this.finalizeRatings(value.data); // this will finalize all the scores in a specfic category
+      }
+    },
+
+    finalizeRatings: function finalizeRatings(id) {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/finalizeratings", { id: id }).then(function (response) {
+        if (response.status == 200) {
+          _this.$notify({
+            group: "app-notification",
+            type: "success",
+            title: "Success!!!",
+            text: "Your scores are finalized."
+          });
+        }
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
+    fetchCategory: function fetchCategory() {
+      var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/scoreboard/getCategories").then(function (response) {
+        _this2.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    },
+    fetchSpecificCategory: function fetchSpecificCategory() {
+      var _this3 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/getCategory/" + cid).then(function (response) {
+        _this3.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    this.fetchSpecificCategory();
+    setInterval(function () {
+      _this4.fetchSpecificCategory();
+    }, 2000);
+  }
+});
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.categories, function(category) {
+      return _c(
+        "div",
+        { key: category.id, staticClass: "row" },
+        [
+          _c("cocktail-dress-rank", { attrs: { categoryid: category.id } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" }, [
+            category.ratings.length > 0
+              ? _c("div", { staticClass: "cardborder-warning mb-3" }, [
+                  _c("div", { staticClass: "card-header clearfix" }, [
+                    _c("div", { staticClass: "card-title" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger float-sm-right",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#msgBox" + category.id
+                          }
+                        },
+                        [_vm._v("LOCK SCORES")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "row",
+                        staticStyle: {
+                          "padding-left": "5px",
+                          "padding-right": "5px"
+                        }
+                      },
+                      _vm._l(category.ratings, function(rating) {
+                        return _c("scoreboard-thumbnail", {
+                          key: rating.id,
+                          attrs: { data: rating, rating: rating }
+                        })
+                      })
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("msgbox", {
+            attrs: { params: _vm.params, data: category },
+            on: { clicked: _vm.onClickChild }
+          })
+        ],
+        1
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0c44faa8", module.exports)
+  }
+}
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(304)
+/* template */
+var __vue_template__ = __webpack_require__(305)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -98799,7 +99191,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/CategoryComponent/PreliminaryComponent.vue"
+Component.options.__file = "resources/js/components/ScoreBoardCategory/CocktailDressRankComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -98808,9 +99200,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55ecc4a2", Component.options)
+    hotAPI.createRecord("data-v-66ccea60", Component.options)
   } else {
-    hotAPI.reload("data-v-55ecc4a2", Component.options)
+    hotAPI.reload("data-v-66ccea60", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -98821,11 +99213,43 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 299 */
+/* 304 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -98843,37 +99267,429 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["categoryid", "categoryname"],
-  methods: {},
-  created: function created() {}
+  props: ["categoryid"],
+  data: function data() {
+    return {
+      rankList: []
+    };
+  },
+
+  methods: {
+    getRankFemale: function getRankFemale() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/cocktail-dress/rank").then(function (response) {
+        _this.rankList = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.getRankFemale();
+    setInterval(function () {
+      _this2.getRankFemale();
+    }, 2000);
+  }
 });
 
 /***/ }),
-/* 300 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v(_vm._s(_vm.categoryname))
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", [_vm._v(_vm._s(_vm.categoryid))])
-            ])
-          ])
-        ])
+  return _c("div", { staticClass: "col-md-12" }, [
+    _c("div", { staticClass: "card card-default" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          { staticClass: "table table-bordered table-striped table-hover" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.rankList, function(rank) {
+                return _c(
+                  "tr",
+                  { key: rank.id, style: "background-color:" + rank.backcolor },
+                  [
+                    _c(
+                      "th",
+                      { staticClass: "text-center", attrs: { scope: "row" } },
+                      [_vm._v(_vm._s(rank.seqno))]
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rank.Contestants))]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.fitness))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.poise))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.confidence))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.beauty))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.TOTAL) + "%")
+                    ])
+                  ]
+                )
+              })
+            )
+          ]
+        )
       ])
     ])
   ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-title" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("Best in Cocktail Dress")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Rank")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Contestants")
+        ]),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            staticStyle: { background: "rgba(64, 160, 255,0.5)" },
+            attrs: { colspan: "4" }
+          },
+          [_vm._v("CRITERIA FOR JUDGING")]
+        ),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("TOTAL (100%)")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Fitness of the Suit (30%)")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Poise and Bearing (30%)")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Confidence (20%)")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Beauty (20%)")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66ccea60", module.exports)
+  }
+}
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(307)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(309)
+/* template */
+var __vue_template__ = __webpack_require__(310)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-fdaeb512"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ScoreBoardCategory/FestivalCostumeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fdaeb512", Component.options)
+  } else {
+    hotAPI.reload("data-v-fdaeb512", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(308);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("1a72746b", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fdaeb512\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FestivalCostumeComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-fdaeb512\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FestivalCostumeComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul[data-v-fdaeb512] {\r\n  list-style-type: none;\r\n  float: left;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 309 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var cid = 19; // category id
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categories: [],
+      params: {
+        // this is for the modal window
+        message: "This will finalize all your scores on this category. Would you like to continue?",
+        title: "Confirm",
+        type: "confirm"
+      }
+    };
+  },
+
+  methods: {
+    onClickChild: function onClickChild(value) {
+      if (value.yes) {
+        this.finalizeRatings(value.data); // this will finalize all the scores in a specfic category
+      }
+    },
+
+    finalizeRatings: function finalizeRatings(id) {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/finalizeratings", { id: id }).then(function (response) {
+        if (response.status == 200) {
+          _this.$notify({
+            group: "app-notification",
+            type: "success",
+            title: "Success!!!",
+            text: "Your scores are finalized."
+          });
+        }
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
+    fetchCategory: function fetchCategory() {
+      var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/scoreboard/getCategories").then(function (response) {
+        _this2.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    },
+    fetchSpecificCategory: function fetchSpecificCategory() {
+      var _this3 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/getCategory/" + cid).then(function (response) {
+        _this3.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    this.fetchSpecificCategory();
+    setInterval(function () {
+      _this4.fetchSpecificCategory();
+    }, 2000);
+  }
+});
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.categories, function(category) {
+      return _c(
+        "div",
+        { key: category.id, staticClass: "row" },
+        [
+          _c("festival-costume-rank", { attrs: { categoryid: category.id } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" }, [
+            category.ratings.length > 0
+              ? _c("div", { staticClass: "cardborder-warning mb-3" }, [
+                  _c("div", { staticClass: "card-header clearfix" }, [
+                    _c("div", { staticClass: "card-title" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger float-sm-right",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#msgBox" + category.id
+                          }
+                        },
+                        [_vm._v("LOCK SCORES")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "row",
+                        staticStyle: {
+                          "padding-left": "5px",
+                          "padding-right": "5px"
+                        }
+                      },
+                      _vm._l(category.ratings, function(rating) {
+                        return _c("scoreboard-thumbnail", {
+                          key: rating.id,
+                          attrs: { data: rating, rating: rating }
+                        })
+                      })
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("msgbox", {
+            attrs: { params: _vm.params, data: category },
+            on: { clicked: _vm.onClickChild }
+          })
+        ],
+        1
+      )
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -98881,20 +99697,851 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-55ecc4a2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-fdaeb512", module.exports)
   }
 }
 
 /***/ }),
-/* 301 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(302)
+var __vue_script__ = __webpack_require__(312)
 /* template */
-var __vue_template__ = __webpack_require__(303)
+var __vue_template__ = __webpack_require__(313)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ScoreBoardCategory/FestivalCostumeRankComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3ae3afab", Component.options)
+  } else {
+    hotAPI.reload("data-v-3ae3afab", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 312 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["categoryid"],
+  data: function data() {
+    return {
+      rankList: []
+    };
+  },
+
+  methods: {
+    getRankFemale: function getRankFemale() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/festival-costume/rank").then(function (response) {
+        _this.rankList = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.getRankFemale();
+    setInterval(function () {
+      _this2.getRankFemale();
+    }, 2000);
+  }
+});
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-12" }, [
+    _c("div", { staticClass: "card card-default" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          { staticClass: "table table-bordered table-striped table-hover" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.rankList, function(rank) {
+                return _c(
+                  "tr",
+                  { key: rank.id, style: "background-color:" + rank.backcolor },
+                  [
+                    _c(
+                      "th",
+                      { staticClass: "text-center", attrs: { scope: "row" } },
+                      [_vm._v(_vm._s(rank.seqno))]
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rank.Contestants))]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.creativity))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.ethnicity))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.fitness))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.confidence))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.TOTAL) + "%")
+                    ])
+                  ]
+                )
+              })
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-title" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("Best in Festival Costume")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Rank")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Contestants")
+        ]),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            staticStyle: { background: "rgba(64, 160, 255,0.5)" },
+            attrs: { colspan: "4" }
+          },
+          [_vm._v("CRITERIA FOR JUDGING")]
+        ),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("TOTAL (100%)")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            attrs: { title: "Creativity, Style and Design of the Costume" }
+          },
+          [_vm._v("Creativity, Style and Design (40%)")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            attrs: { title: "Ethnicity of Materials used" }
+          },
+          [_vm._v("Ethnicity of Materials (30%)")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            attrs: { title: "Fitness of the Attire" }
+          },
+          [_vm._v("Fitness of the Attire (20%)")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            attrs: { title: "Confidence/ Poise/ Projection" }
+          },
+          [_vm._v("Confidence/ Poise/ Projection (10%)")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3ae3afab", module.exports)
+  }
+}
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(315)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(317)
+/* template */
+var __vue_template__ = __webpack_require__(318)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1834b8a4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ScoreBoardCategory/SwimWearComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1834b8a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-1834b8a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(316);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("7d2269fa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1834b8a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SwimWearComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1834b8a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SwimWearComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul[data-v-1834b8a4] {\r\n  list-style-type: none;\r\n  float: left;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 317 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var cid = 17;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categories: [],
+      params: {
+        // this is for the modal window
+        message: "This will finalize all your scores on this category. Would you like to continue?",
+        title: "Confirm",
+        type: "confirm"
+      }
+    };
+  },
+
+  methods: {
+    onClickChild: function onClickChild(value) {
+      if (value.yes) {
+        this.finalizeRatings(value.data); // this will finalize all the scores in a specfic category
+      }
+    },
+
+    finalizeRatings: function finalizeRatings(id) {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/finalizeratings", { id: id }).then(function (response) {
+        if (response.status == 200) {
+          _this.$notify({
+            group: "app-notification",
+            type: "success",
+            title: "Success!!!",
+            text: "Your scores are finalized."
+          });
+        }
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
+    fetchCategory: function fetchCategory() {
+      var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/scoreboard/getCategories").then(function (response) {
+        _this2.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    },
+    fetchSpecificCategory: function fetchSpecificCategory() {
+      var _this3 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/getCategory/" + cid).then(function (response) {
+        _this3.categories = response.data.categories;
+      }).catch(function (e) {
+        console.log(e);
+      });
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    this.fetchSpecificCategory();
+    setInterval(function () {
+      _this4.fetchSpecificCategory();
+    }, 2000);
+  }
+});
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.categories, function(category) {
+      return _c(
+        "div",
+        { key: category.id, staticClass: "row" },
+        [
+          _c("swim-wear-rank", { attrs: { categoryid: category.id } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" }, [
+            category.ratings.length > 0
+              ? _c("div", { staticClass: "cardborder-warning mb-3" }, [
+                  _c("div", { staticClass: "card-header clearfix" }, [
+                    _c("div", { staticClass: "card-title" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger float-sm-right",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#msgBox" + category.id
+                          }
+                        },
+                        [_vm._v("LOCK SCORES")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "row",
+                        staticStyle: {
+                          "padding-left": "5px",
+                          "padding-right": "5px"
+                        }
+                      },
+                      _vm._l(category.ratings, function(rating) {
+                        return _c("scoreboard-thumbnail", {
+                          key: rating.id,
+                          attrs: { data: rating, rating: rating }
+                        })
+                      })
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("msgbox", {
+            attrs: { params: _vm.params, data: category },
+            on: { clicked: _vm.onClickChild }
+          })
+        ],
+        1
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1834b8a4", module.exports)
+  }
+}
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(320)
+/* template */
+var __vue_template__ = __webpack_require__(321)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ScoreBoardCategory/SwimWearRankComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7a286458", Component.options)
+  } else {
+    hotAPI.reload("data-v-7a286458", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["categoryid"],
+  data: function data() {
+    return {
+      rankList: []
+    };
+  },
+
+  methods: {
+    getRankFemale: function getRankFemale() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/scoreboard/swim-wear/rank").then(function (response) {
+        _this.rankList = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.getRankFemale();
+    setInterval(function () {
+      _this2.getRankFemale();
+    }, 2000);
+  }
+});
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-12" }, [
+    _c("div", { staticClass: "card card-default" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          { staticClass: "table table-bordered table-striped table-hover" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.rankList, function(rank) {
+                return _c(
+                  "tr",
+                  { key: rank.id, style: "background-color:" + rank.backcolor },
+                  [
+                    _c(
+                      "th",
+                      { staticClass: "text-center", attrs: { scope: "row" } },
+                      [_vm._v(_vm._s(rank.seqno))]
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rank.Contestants))]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.figure))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.face))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.personality))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.impact))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(rank.TOTAL) + "%")
+                    ])
+                  ]
+                )
+              })
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-title" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("Best in Swim Wear")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Rank")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("Contestants")
+        ]),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "text-center",
+            staticStyle: { background: "rgba(64, 160, 255,0.5)" },
+            attrs: { colspan: "4" }
+          },
+          [_vm._v("CRITERIA FOR JUDGING")]
+        ),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { rowspan: "2" } }, [
+          _vm._v("TOTAL (100%)")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Beauty of Figure (40%)")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Beauty of the Face (30%)")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Poise/Bearing/Personality (20%)")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [
+          _vm._v("Overall Impact (20%)")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7a286458", module.exports)
+  }
+}
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(323)
+/* template */
+var __vue_template__ = __webpack_require__(324)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -98933,7 +100580,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 302 */
+/* 323 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98987,7 +100634,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 303 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -99074,7 +100721,7 @@ if (false) {
 }
 
 /***/ }),
-/* 304 */
+/* 325 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -3,20 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ env('app_name') }}</title>
-
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -48,9 +39,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary Round</a>
                                     <div class="dropdown-menu">
-                                        @foreach( App\Category::where('levelid','3')->orderBy('name')->get(['id','name']) as $category )
-                                            <a class="dropdown-item" href="{{ url('/judge-category/'.$category->id) }}">{{ $category->name }}</a>
-                                        @endforeach
+                                        <a class="dropdown-item" href="{{ url('/judge-category/swim-wear') }}">Swim Wear</a>
+                                        <a class="dropdown-item" href="{{ url('/judge-category/cocktail-dress') }}">Cocktail Dress</a>
+                                        <a class="dropdown-item" href="{{ url('/judge-category/festival-costume') }}">Festival Costume</a>
+                                        <a class="dropdown-item" href="{{ url('/judge-category/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
+                                        <a class="dropdown-item" href="{{ url('/judge-category/preliminary-interview') }}">Preliminary Interview</a>
                                     </div>
                                 </li>
                                 <li><a class="nav-link" href="#">Final Round</a></li>
@@ -85,7 +78,6 @@
                                     </div>
                                 </li>
                             @else
-                                <li class="nav-item"><a class="nav-link" href="{{ url('/scoreboard') }}">My Scoreboard</a></li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>

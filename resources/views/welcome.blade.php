@@ -15,8 +15,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/storage/img/home.jpg");
-                background-color: #fff;
+                /* background-image: url("/storage/img/home.jpg"); */
+                background-color: #60ca61;
                 background-position: center center;  
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;

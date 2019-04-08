@@ -31,8 +31,14 @@ Vue.component('rounds', require('./components/RoundsComponent/RoundsComponent.vu
 Vue.component('round', require('./components/RoundsComponent/RoundComponent.vue'));
 Vue.component('rounds-modal', require('./components/RoundsComponent/LevelsModalComponent.vue'));
 
-//Preliminary Round
-Vue.component('preliminary-round', require('./components/CategoryComponent/PreliminaryComponent.vue'));
+// Scoreboard per category
+Vue.component('cocktail-dress', require('./components/ScoreBoardCategory/CocktailDressComponent.vue'));
+Vue.component('cocktail-dress-rank', require('./components/ScoreBoardCategory/CocktailDressRankComponent.vue'));
+Vue.component('festival-costume', require('./components/ScoreBoardCategory/FestivalCostumeComponent.vue'));
+Vue.component('festival-costume-rank', require('./components/ScoreBoardCategory/FestivalCostumeRankComponent.vue'));
+Vue.component('swim-wear', require('./components/ScoreBoardCategory/SwimWearComponent.vue'));
+Vue.component('swim-wear-rank', require('./components/ScoreBoardCategory/SwimWearRankComponent.vue'));
+
 
 // Utilities
 Vue.component('msgbox', require('./components/util/MsgBoxComponent.vue'));

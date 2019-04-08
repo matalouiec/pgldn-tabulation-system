@@ -24,4 +24,24 @@ class JudgeCategory extends Controller
         }
     }
 
+    public function CocktailDress(){
+        return view('category.cocktaildress');
+    }
+
+    public function FestivalCostume(){
+        return view('category.festivalcostume');
+    }
+
+    public function SwimWear(){
+        return view('category.swimwear');
+    }
+
+    public function MaranaoInspiredGown(){
+        return view('category.inspiredgown');
+    }
+
+    public function PreliminaryInterview(){
+        return view('category.preliminaryinterview');
+    }
+
 }

@@ -45,7 +45,12 @@ Route::post('/judge-dashboard/rating','JudgeDashboard@createRatingHeader')->midd
 Route::post('/judge-dashboard/rating-entries','JudgeDashboard@saveRatingEntries')->middleware('auth');
 
 // Judges Category
-Route::get('/judge-category/{id}','JudgeCategory@index')->middleware('auth');
+// Route::get('/judge-category/{id}','JudgeCategory@index')->middleware('auth');
+Route::get('/judge-category/cocktail-dress','JudgeCategory@CocktailDress')->middleware('auth');
+Route::get('/judge-category/festival-costume','JudgeCategory@FestivalCostume')->middleware('auth');
+Route::get('/judge-category/swim-wear','JudgeCategory@SwimWear')->middleware('auth');
+Route::get('/judge-category/maranao-inspired-gown','JudgeCategory@MaranaoInspiredGown')->middleware('auth');
+Route::get('/judge-category/preliminary-interview','JudgeCategory@PreliminaryInterview')->middleware('auth');
 
 //Judges Scoreboard
 Route::get('/scoreboard','ScoreBoardController@index')->middleware('auth');
@@ -55,6 +60,15 @@ Route::post('/scoreboard/rating','ScoreBoardController@updateRatings')->middlewa
 Route::post('/scoreboard/finalize','ScoreBoardController@finalizeRating')->middleware('auth');
 Route::post('/scoreboard/finalizeratings','ScoreBoardController@finalizeRatings')->middleware('auth');
 Route::get('/scoreboard/rank','ScoreBoardController@getRank')->middleware('auth');
+Route::post('/scoreboard/getCategory/{id}','ScoreBoardController@getCategory')->middleware('auth');
+
+//Judges Individual Rank
+Route::post('/scoreboard/question-answer/rank','ScoreBoardController@getQA')->middleware('auth');
+Route::post('/scoreboard/preliminary-interview/rank','ScoreBoardController@getPreliminaryInterview')->middleware('auth');
+Route::post('/scoreboard/inspired-gown/rank','ScoreBoardController@getInspiredGown')->middleware('auth');
+Route::post('/scoreboard/swim-wear/rank','ScoreBoardController@getSwimWear')->middleware('auth');
+Route::post('/scoreboard/cocktail-dress/rank','ScoreBoardController@getCocktailDress')->middleware('auth');
+Route::post('/scoreboard/festival-costume/rank','ScoreBoardController@getFestivalCostume')->middleware('auth');
 
 //Judges Controller
 Route::get('/judges','JudgesController@getJudges')->middleware('auth');
