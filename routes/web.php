@@ -51,6 +51,7 @@ Route::get('/judge-category/festival-costume','JudgeCategory@FestivalCostume')->
 Route::get('/judge-category/swim-wear','JudgeCategory@SwimWear')->middleware('auth');
 Route::get('/judge-category/maranao-inspired-gown','JudgeCategory@MaranaoInspiredGown')->middleware('auth');
 Route::get('/judge-category/preliminary-interview','JudgeCategory@PreliminaryInterview')->middleware('auth');
+Route::get('/judge-category/question-and-answer','JudgeCategory@QA')->middleware('auth');
 
 //Judges Scoreboard
 Route::get('/scoreboard','ScoreBoardController@index')->middleware('auth');

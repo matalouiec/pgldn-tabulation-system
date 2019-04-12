@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-        <preliminary-interview></preliminary-interview>
+        <question-answer />
 </div>
 @endsection

@@ -38,7 +38,12 @@ Vue.component('festival-costume', require('./components/ScoreBoardCategory/Festi
 Vue.component('festival-costume-rank', require('./components/ScoreBoardCategory/FestivalCostumeRankComponent.vue'));
 Vue.component('swim-wear', require('./components/ScoreBoardCategory/SwimWearComponent.vue'));
 Vue.component('swim-wear-rank', require('./components/ScoreBoardCategory/SwimWearRankComponent.vue'));
-
+Vue.component('maranao-inspired', require('./components/ScoreBoardCategory/MaranaoInspiredComponent.vue'));
+Vue.component('maranao-inspired-rank', require('./components/ScoreBoardCategory/MaranaoInspiredRankComponent.vue'));
+Vue.component('preliminary-interview', require('./components/ScoreBoardCategory/PreliminaryInterviewComponent.vue'));
+Vue.component('preliminary-interview-rank', require('./components/ScoreBoardCategory/PreliminaryInterviewRankComponent.vue'));
+Vue.component('question-answer', require('./components/ScoreBoardCategory/QuestionAnswerComponent.vue'));
+Vue.component('question-answer-rank', require('./components/ScoreBoardCategory/QuestionAnswerRankComponent.vue'));
 
 // Utilities
 Vue.component('msgbox', require('./components/util/MsgBoxComponent.vue'));

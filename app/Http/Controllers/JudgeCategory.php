@@ -44,4 +44,8 @@ class JudgeCategory extends Controller
         return view('category.preliminaryinterview');
     }
 
+    public function QA(){
+        return view('category.qa');
+    }
+
 }

@@ -77,9 +77,9 @@ export default {
       ratingEntries: [],
       totalScore: 0,
       params: {
-        title: "Warning!",
+        title: "Locked!",
         message:
-          "Final scores can no longer be modified. Please contact the official tabulator.",
+          "Locked scores can no longer be modified. Please contact the official tabulator.",
         type: "info"
       },
       data: {

@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
             <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name','') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -46,7 +46,7 @@
                                         <a class="dropdown-item" href="{{ url('/judge-category/preliminary-interview') }}">Preliminary Interview</a>
                                     </div>
                                 </li>
-                                <li><a class="nav-link" href="#">Final Round</a></li>
+                                <li><a class="nav-link" href="{{ url('/judge-category/question-and-answer') }}">Question & Answer</a></li>
                             @endcan
                         @endif
                     </ul>
@@ -102,7 +102,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="margin-top:45px;">
             @yield('content')
             <notifications group="app-notification" position="bottom right" animation-type="velocity"/>
         </main>
