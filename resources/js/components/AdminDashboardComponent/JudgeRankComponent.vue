@@ -3,11 +3,7 @@
     <div class="card border-primary mb-3">
       <div class="card-header">
         {{ judge.name }}
-        <a
-          :href="'/report/juid/'+judge.id"
-          target="other"
-          class="btn float-sm-right"
-        >
+        <a :href="'/report/qa/'+judge.id" target="other" class="btn float-sm-right">
           <i class="fas fa-print"></i>
         </a>
       </div>

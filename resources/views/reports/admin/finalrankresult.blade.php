@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <center><h2>Miss Lanao del Norte 2019</h2></center>
+                <center><h2>{{ config('app.name') }}</h2></center>
             </div>
         </div>
         <div class="row">

@@ -63,7 +63,7 @@ export default {
         });
     }
   },
-  mounted() {
+  created() {
     setInterval(() => {
       this.getStats();
     }, 2000);

@@ -81,6 +81,9 @@ Route::get('/judges/getIndividualRank/{id}','JudgesController@getIndividualRank'
 Route::get('/judges/qa/{id}','JudgesController@getQA')->middleware('auth');
 
 //Report Controller
-Route::get('/report/juid/{id}','ReportController@getIndividualRankReport')->middleware('auth');
+//Route::get('/report/juid/{id}','ReportController@getIndividualRankReportQA')->middleware('auth');
+Route::get('/report/qa/{id}','ReportController@getIndividualRankReportQA')->middleware('auth');
+
+
 Route::get('/report/final-result','ReportController@getFinalReport')->middleware('auth');
 Route::get('/report/final','ReportController@getFinalRankReport')->middleware('auth');

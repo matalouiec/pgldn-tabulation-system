@@ -65,6 +65,7 @@
                           style="width:350px;"
                           class="custom-range"
                           :name="'scores'+entry.id"
+                          tabindex="-1"
                           required
                         >
                       </td>

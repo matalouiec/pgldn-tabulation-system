@@ -70,6 +70,7 @@
                             style="width:100%;"
                             class="custom-range"
                             :name="'scores'+contestant.id+category.id+criteria.id"
+                            tabindex="-1"
                             required
                           >
                         </td>
@@ -95,7 +96,7 @@
                           align="center"
                           style="color:#000;font-size:1.2vw;font-weight:bold;"
                         >Total</td>
-                        <td style="font-size:1.2vw;font-weight:bold;">{{ totalScore }}%</td>
+                        <td style="font-size:1.2vw;font-weight:bold;">{{ totalScore.toFixed(2) }}%</td>
                       </tr>
                     </tfoot>
                     <tfoot v-else>
