@@ -71,9 +71,11 @@
                       </td>
                       <td>
                         <input
+                          @change="computeTotalScore"
                           v-validate="'between:0,'+entry.percentage"
                           v-model="entry.acquired_rating"
                           type="number"
+                          min="0"
                           :max="entry.percentage"
                           style="width:72px;"
                           id="txtScore"
