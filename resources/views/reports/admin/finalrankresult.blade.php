@@ -7,7 +7,7 @@
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name','Sagayan Festival Ranking System') }}</title>
+    <title>{{ config('app.name') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <style>
@@ -23,17 +23,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <center><h2>Paskuhan sa Lanao del Norte</h2></center>
+                <center><h2>Miss Lanao del Norte 2019</h2></center>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <center style="font-weight:bold;font-size:18px;">INTER-LGU SAYAWIT COMPETITION</center>
+                <center style="font-weight:bold;font-size:18px;">INTER-LGU BEAUTY PAGEANT</center>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <center>December 8,2018 7:00PM | Agora Terminal, Sagadan, Tubod, Lanao del Norte</center>
+                <center>July 2, 2019  8:00PM | MCC Gymnasium, Sagadan, Tubod, Lanao del Norte</center>
             </div>
         </div>
         <div class="row">
@@ -52,6 +52,8 @@
                         <th class="text-center">Judge 1</th>
                         <th class="text-center">Judge 2</th>
                         <th class="text-center">Judge 3</th>
+                        <th class="text-center">Judge 4</th>
+                        <th class="text-center">Judge 5</th>
                         <th class="text-center">Total</th>
                         <th class="text-center">Rank</th>
                     </tr>
@@ -63,6 +65,8 @@
                             <td class="text-center">{{ $rank->Judge1 }}</td>
                             <td class="text-center">{{ $rank->Judge2 }}</td>
                             <td class="text-center">{{ $rank->Judge3 }}</td>
+                            <td class="text-center">{{ $rank->Judge4 }}</td>
+                            <td class="text-center">{{ $rank->Judge5 }}</td>
                             <td class="text-center">{{ $rank->T }}</td>
                             <th scope="row" class="text-center">{{ $rank->counter }}</th>
                         </tr>

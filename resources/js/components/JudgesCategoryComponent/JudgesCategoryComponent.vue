@@ -20,7 +20,7 @@
               </div>
               <div v-else>
                 <center>
-                  <a href="/judge-category/cocktail-dress" class="btn btn-info">VIEW SCORES</a>
+                  <a :href="category.link" class="btn btn-info">VIEW SCORES</a>
                 </center>
               </div>
             </div>

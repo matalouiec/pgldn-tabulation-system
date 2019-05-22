@@ -25,7 +25,17 @@
                         &nbsp;
                         @if(Auth::check())
                             @can('admin-only', Auth::user())
-                                <li class="nav-item"><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li>                            
+                                <li class="nav-item"><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li> 
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('/preliminary/19') }}">Festival Costume</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/18') }}">Cocktail Dress</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/17') }}">Swim Wear</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/16') }}">Maranao Inspired Gown</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/15') }}">Preliminary Interview</a>
+                                    </div>
+                                </li>                           
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Masterdata</a>
                                     <div class="dropdown-menu">
@@ -39,11 +49,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary Round</a>
                                     <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('/judge-category/festival-costume') }}">Festival Costume</a>
                                         <a class="dropdown-item" href="{{ url('/judge-category/swim-wear') }}">Swim Wear</a>
                                         <a class="dropdown-item" href="{{ url('/judge-category/cocktail-dress') }}">Cocktail Dress</a>
-                                        <a class="dropdown-item" href="{{ url('/judge-category/festival-costume') }}">Festival Costume</a>
-                                        <a class="dropdown-item" href="{{ url('/judge-category/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
                                         <a class="dropdown-item" href="{{ url('/judge-category/preliminary-interview') }}">Preliminary Interview</a>
+                                        <a class="dropdown-item" href="{{ url('/judge-category/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
                                     </div>
                                 </li>
                                 <li><a class="nav-link" href="{{ url('/judge-category/question-and-answer') }}">Question & Answer</a></li>

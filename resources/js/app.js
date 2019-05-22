@@ -45,6 +45,9 @@ Vue.component('preliminary-interview-rank', require('./components/ScoreBoardCate
 Vue.component('question-answer', require('./components/ScoreBoardCategory/QuestionAnswerComponent.vue'));
 Vue.component('question-answer-rank', require('./components/ScoreBoardCategory/QuestionAnswerRankComponent.vue'));
 
+//Preliminary Rounds
+Vue.component('preliminary-round', require('./components/PreliminaryComponent/PreliminaryRoundComponent.vue'));
+
 // Utilities
 Vue.component('msgbox', require('./components/util/MsgBoxComponent.vue'));
 Vue.use(Notifications, { velocity });

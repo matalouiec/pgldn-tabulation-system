@@ -27,11 +27,25 @@ class JudgesController extends Controller
         DB::statement(DB::raw('set @prev_value:=NULL'));
         DB::statement(DB::raw('set @row:=0'));
 
-        $rank = DB::table('per_judge_ranking')
+        $rank = DB::table('vw_qa_a')
                     ->where('Judge',$request->id)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
                                         END AS seqno'),'Contestants','Voice_Quality','Choreography','Costume_Props','Overall_Impact','TOTAL'])
+                    ->get();
+
+        return response()->json($rank);
+    }
+
+    public function getQA(Request $request){
+        DB::statement(DB::raw('set @prev_value:=NULL'));
+        DB::statement(DB::raw('set @row:=0'));
+
+        $rank = DB::table('vw_qa')
+                    ->where('Judge',$request->id)
+                    ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
+                                        WHEN @prev_value := TOTAL THEN @row := @row + 1
+                                        END AS seqno'),'Contestants','intelligence','outlook','performance','TOTAL'])
                     ->get();
 
         return response()->json($rank);

@@ -15,8 +15,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                /* background-image: url("/storage/img/home.jpg"); */
-                background-color: #60ca61;
+                background-image: url("/storage/img/background.png");
+                /* background-color: #dcf1d6; */
                 background-position: center center;  
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
@@ -53,6 +53,8 @@
                 font-size: 90px;
                 color:#ffff;
                 font-weight:bold;
+                font-family: serif;
+                font-style:italic;
             }
 
             .links > a {

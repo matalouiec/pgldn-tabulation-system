@@ -129,7 +129,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','intelligence','outlook','performance','TOTAL'])
+                                        END AS seqno'),'parent','isFinal','backcolor','Contestants','intelligence','outlook','performance','TOTAL'])
                     ->get();
 
         return response()->json($rank);
@@ -144,7 +144,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','outlook','intelligence','TOTAL'])
+                                        END AS seqno'),'backcolor','Contestants','parent','isFinal','outlook','intelligence','TOTAL'])
                     ->get();
 
         return response()->json($rank);
@@ -159,7 +159,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','relevance','wearer','personality','elegance','face','TOTAL'])
+                                        END AS seqno'),'parent','isFinal','backcolor','Contestants','relevance','wearer','personality','elegance','face','TOTAL'])
                     ->get();
 
         return response()->json($rank);
@@ -174,7 +174,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','figure','face','personality','impact','TOTAL'])
+                                        END AS seqno'),'parent','isFinal','backcolor','Contestants','figure','face','personality','impact','TOTAL'])
                     ->get();
 
         return response()->json($rank);
@@ -189,7 +189,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','fitness','poise','confidence','beauty','TOTAL'])
+                                        END AS seqno'),'parent','isFinal','backcolor','Contestants','fitness','poise','confidence','beauty','TOTAL'])
                     ->get();
 
         return response()->json($rank);
@@ -204,7 +204,7 @@ class ScoreBoardController extends Controller
                     ->where('Judge',$uid)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'backcolor','Contestants','creativity','ethnicity','fitness','confidence','TOTAL'])
+                                        END AS seqno'),'parent','isFinal','backcolor','Contestants','creativity','ethnicity','fitness','confidence','TOTAL'])
                     ->get();
 
         return response()->json($rank);

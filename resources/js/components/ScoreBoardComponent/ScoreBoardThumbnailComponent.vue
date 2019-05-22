@@ -48,14 +48,14 @@
                     {{ ratingentry.criteria_name }}
                     <span
                       class="badge badge-primary badge-pill"
-                    >{{ parseFloat(ratingentry.acquired_rating) }}</span>
+                    >{{ parseFloat(ratingentry.acquired_rating).toFixed(2) }}</span>
                   </li>
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center"
                     style="background:#B3ECEC;"
                   >
                     <b>Total</b>
-                    <span class="badge badge-info badge-pill">{{ totalScore }}</span>
+                    <span class="badge badge-info badge-pill">{{ totalScore.toFixed(2) }}</span>
                   </li>
                 </ul>
               </div>

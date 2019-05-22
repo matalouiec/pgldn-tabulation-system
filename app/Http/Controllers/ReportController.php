@@ -178,7 +178,7 @@ class ReportController extends Controller
                                     @row_number
                                 END AS `Judge_5`
                                 FROM
-                                    per_judge_ranking AS xx,
+                                    vw_qa AS xx,
                                     (
                                         SELECT
                                             @row_number := 0 ,@judge := '' ,@prev_value := ''

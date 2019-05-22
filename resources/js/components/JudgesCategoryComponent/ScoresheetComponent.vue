@@ -33,14 +33,20 @@
                       :alt="contestant.name"
                     >
                     <br>
-                    <span class="label label-primary">Name</span> :
-                    <span class="label label-warning">{{ contestant.name }}</span>
-                    <br>
-                    <span class="label label-primary">Age</span> :
-                    <span class="label label-warning">{{ contestant.age }}</span>
-                    <br>
-                    <span class="label label-primary">Representing</span> :
-                    <span class="label label-warning">{{ contestant.representing }}</span>
+                    <table>
+                      <tr>
+                        <td style="font-weight:bold;">Name :</td>
+                        <td style="color:red;">{{ contestant.name }}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight:bold;">Representing :</td>
+                        <td style="color:red;">{{ contestant.representing }}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight:bold;">Age :</td>
+                        <td style="color:red;">{{ contestant.age }}</td>
+                      </tr>
+                    </table>
                   </center>
                 </div>
                 <div class="col-md-8">
@@ -49,6 +55,7 @@
                       <tr v-for="criteria in criterias" :key="criteria.id">
                         <td style="padding-top:10px;width:10em;">
                           <span style="font-size:1vw;" class="criteria">{{ criteria.criteria_name }}</span>
+                          <span style="font-size:0.8vw;color:green;">({{ criteria.percentage }}%)</span>
                         </td>
                         <td>
                           <input

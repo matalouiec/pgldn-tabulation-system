@@ -25,18 +25,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="rank in rankList"
-              v-bind:key="rank.id"
-              :style="'background-color:'+rank.backcolor"
-            >
+            <tr v-for="rank in rankList" v-bind:key="rank.id">
               <th scope="row" class="text-center">{{ rank.seqno }}</th>
-              <td>{{ rank.Contestants }}</td>
+              <td>
+                <a
+                  href="#"
+                  data-toggle="modal"
+                  :data-target="'#MyModal'+rank.parent"
+                  v-if="rank.isFinal==0"
+                >
+                  {{ rank.Contestants }}&nbsp;
+                  <i class="fa fa-lock-open" style="color:green;"></i>
+                </a>
+                <a href="#" data-toggle="modal" data-target="#msgBox01" v-if="rank.isFinal==1">
+                  {{ rank.Contestants }}&nbsp;
+                  <i class="fa fa-lock" style="color:red;"></i>
+                </a>
+              </td>
               <td class="text-center">{{ rank.fitness }}</td>
               <td class="text-center">{{ rank.poise }}</td>
               <td class="text-center">{{ rank.confidence }}</td>
               <td class="text-center">{{ rank.beauty }}</td>
-              <td class="text-center">{{ rank.TOTAL }}%</td>
+              <td class="text-center">{{ rank.TOTAL.toFixed(2) }}%</td>
             </tr>
           </tbody>
         </table>

@@ -50,6 +50,7 @@
                     <tr v-for="entry in ratingEntries" :key="entry.id">
                       <td style="padding-top:10px;width:10em;">
                         <span style="font-size:1vw;" class="criteria">{{ entry.criteria_name }}</span>
+                        <span style="font-size:0.8vw;color:green;">({{ entry.percentage }}%)</span>
                       </td>
                       <td>
                         <input

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-       <preliminary-round categoryid="{{ $category->id }}" categoryname="{{ $category->name }}" ></preliminary-round>
+       <preliminary-round categoryid='1'>{{ $data }}</preliminary-round>
     </div>
 @endsection

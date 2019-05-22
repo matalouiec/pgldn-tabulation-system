@@ -44,6 +44,9 @@ Route::get('/judge-dashboard/category/criteria/{category}', 'JudgeDashboard@getC
 Route::post('/judge-dashboard/rating','JudgeDashboard@createRatingHeader')->middleware('auth');
 Route::post('/judge-dashboard/rating-entries','JudgeDashboard@saveRatingEntries')->middleware('auth');
 
+// Judge Preliminary round
+Route::get('/preliminary/{id}', 'PreliminartCategoryController@index')->middleware('auth');
+
 // Judges Category
 // Route::get('/judge-category/{id}','JudgeCategory@index')->middleware('auth');
 Route::get('/judge-category/cocktail-dress','JudgeCategory@CocktailDress')->middleware('auth');
@@ -74,6 +77,8 @@ Route::post('/scoreboard/festival-costume/rank','ScoreBoardController@getFestiva
 //Judges Controller
 Route::get('/judges','JudgesController@getJudges')->middleware('auth');
 Route::get('/judges/getIndividualRank/{id}','JudgesController@getIndividualRank')->middleware('auth');
+
+Route::get('/judges/qa/{id}','JudgesController@getQA')->middleware('auth');
 
 //Report Controller
 Route::get('/report/juid/{id}','ReportController@getIndividualRankReport')->middleware('auth');
