@@ -16,7 +16,7 @@
           <div class="container-fluid">
             <div class="row" id="caption">
               <div class="col-md-4">
-                <center style="font-weight:bold;">Contingent Details</center>
+                <center style="font-weight:bold;">Contestant Details</center>
               </div>
               <div class="col-md-8">
                 <center style="font-weight:bold;">Criteria for Judging</center>

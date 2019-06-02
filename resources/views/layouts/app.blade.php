@@ -29,11 +29,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ url('/preliminary/19') }}">Festival Costume</a>
-                                        <a class="dropdown-item" href="{{ url('/preliminary/18') }}">Cocktail Dress</a>
-                                        <a class="dropdown-item" href="{{ url('/preliminary/17') }}">Swim Wear</a>
-                                        <a class="dropdown-item" href="{{ url('/preliminary/16') }}">Maranao Inspired Gown</a>
-                                        <a class="dropdown-item" href="{{ url('/preliminary/15') }}">Preliminary Interview</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/festival-costume') }}">Festival Costume</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/cocktail-dress') }}">Cocktail Dress</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/swim-wear') }}">Swim Wear</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
+                                        <a class="dropdown-item" href="{{ url('/preliminary/prelim-interview') }}">Preliminary Interview</a>
                                     </div>
                                 </li>                           
                                 <li class="nav-item dropdown">

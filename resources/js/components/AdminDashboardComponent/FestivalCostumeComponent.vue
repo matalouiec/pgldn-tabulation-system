@@ -3,20 +3,20 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">FINAL RESULT</div>
+          <div class="card-header">FESTIVAL COSTUME</div>
           <div class="card-body">
             <div class="row">
-              <final-rank vwname="vw_qa"></final-rank>
-              <judges-gauge :catid="14" :levelid="1"></judges-gauge>
+              <final-rank vwname="vw_festivalcostume"></final-rank>
+              <judges-gauge :catid="19" :levelid="3"></judges-gauge>
             </div>
             <br>
             <div class="row">
-              <judge-rank
+              <prelim-fc
                 v-for="judge in judgesList"
                 :key="judge.id"
                 :judge="judge"
                 style="margin-top:20px;"
-              ></judge-rank>
+              ></prelim-fc>
             </div>
           </div>
         </div>

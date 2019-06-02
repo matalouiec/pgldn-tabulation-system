@@ -15,7 +15,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/storage/img/background.png");
+                /* background-image: url("/storage/img/background.png"); */
                 /* background-color: #dcf1d6; */
                 background-position: center center;  
                 color: #636b6f;
@@ -51,7 +51,7 @@
 
             .title {
                 font-size: 90px;
-                color:#ffff;
+                color:grey;
                 font-weight:bold;
                 font-family: serif;
                 font-style:italic;

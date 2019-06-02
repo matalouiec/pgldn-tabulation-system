@@ -6,7 +6,7 @@
           <thead>
             <tr>
               <th class="text-center" rowspan="2">Rank</th>
-              <th class="text-center" rowspan="2">Contingent</th>
+              <th class="text-center" rowspan="2">Contestant</th>
               <th
                 class="text-center"
                 colspan="4"

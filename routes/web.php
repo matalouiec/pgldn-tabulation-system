@@ -32,7 +32,7 @@ Route::get('/round','RoundController@home')->middleware('auth');
 Route::get('/round/getRounds','RoundController@show')->middleware('auth');
 Route::get('/round/getRoundsWithCategories','RoundController@getRoundsWithCategories')->middleware('auth');
 Route::get('/round/CategoryRank/{id}','RoundController@getRankPerCategory')->middleware('auth');
-Route::get('/round/PercentageStats/{id}','RoundController@getPercentageStats')->middleware('auth');
+Route::get('/round/PercentageStats/{levelid}/{categoryid}','RoundController@getPercentageStats')->middleware('auth');
 Route::get('/round/FinakRank/{id}','RoundController@getFinalRanking')->middleware('auth');
 
 
@@ -45,7 +45,12 @@ Route::post('/judge-dashboard/rating','JudgeDashboard@createRatingHeader')->midd
 Route::post('/judge-dashboard/rating-entries','JudgeDashboard@saveRatingEntries')->middleware('auth');
 
 // Judge Preliminary round
-Route::get('/preliminary/{id}', 'PreliminartCategoryController@index')->middleware('auth');
+//Route::get('/preliminary/{id}', 'PreliminaryCategoryController@index')->middleware('auth');
+Route::get('/preliminary/festival-costume', 'PreliminaryCategoryController@festivalcostume')->middleware('auth');
+Route::get('/preliminary/cocktail-dress', 'PreliminaryCategoryController@cocktaildress')->middleware('auth');
+Route::get('/preliminary/swim-wear', 'PreliminaryCategoryController@swimwear')->middleware('auth');
+Route::get('/preliminary/maranao-inspired-gown', 'PreliminaryCategoryController@maranaoinspiredgown')->middleware('auth');
+Route::get('/preliminary/prelim-interview', 'PreliminaryCategoryController@preliminterview')->middleware('auth');
 
 // Judges Category
 // Route::get('/judge-category/{id}','JudgeCategory@index')->middleware('auth');
@@ -79,11 +84,16 @@ Route::get('/judges','JudgesController@getJudges')->middleware('auth');
 Route::get('/judges/getIndividualRank/{id}','JudgesController@getIndividualRank')->middleware('auth');
 
 Route::get('/judges/qa/{id}','JudgesController@getQA')->middleware('auth');
+Route::get('/judges/fc/{id}','JudgesController@getFC')->middleware('auth');
 
 //Report Controller
 //Route::get('/report/juid/{id}','ReportController@getIndividualRankReportQA')->middleware('auth');
 Route::get('/report/qa/{id}','ReportController@getIndividualRankReportQA')->middleware('auth');
+Route::get('/report/fc/{id}','ReportController@getIndividualRankReportFC')->middleware('auth');
 
+Route::get('/report/final-result/{vwname}','ReportController@getFinalReport')->middleware('auth');
+Route::get('/report/festival-costume','ReportController@getFinalReportFC')->middleware('auth');
 
-Route::get('/report/final-result','ReportController@getFinalReport')->middleware('auth');
-Route::get('/report/final','ReportController@getFinalRankReport')->middleware('auth');
+Route::get('/report/final/{vwname}','ReportController@getFinalRankReport')->middleware('auth');
+Route::get('/report/festivalcostume','ReportController@getFinalRankFestivalCostume')->middleware('auth');
+Route::get('/report/test','ReportController@testPDF')->middleware('auth');

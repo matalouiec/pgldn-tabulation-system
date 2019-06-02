@@ -49,13 +49,14 @@
                     <tr>
                         <th class="text-center" rowspan="2">Rank</th>
                         <th class="text-center" rowspan="2">Contestant</th>
-                        <th class="text-center" colspan="3" style="background:rgba(64, 160, 255,0.5);">CRITERIA</th>
-                        <th class="text-center" rowspan="2">TOTAL (100%)</th>
+                        <th class="text-center" colspan="4" style="background:rgba(64, 160, 255,0.5);">CRITERIA</th>
+                        <th class="text-center" rowspan="0">TOTAL (100%)</th>
                     </tr>
                     <tr>
-                        <th class="text-center">Intelligence (40%)</th>
-                        <th class="text-center">Personal Outlook  (40%)</th>
-                        <th class="text-center">Overall Performance (20%)</th>
+                        <th class="text-center">Creativity (40%)</th>
+                        <th class="text-center">Ethnicity of materials used (30%)</th>
+                        <th class="text-center">Fitness of the attire (15%)</th>
+                        <th class="text-center">Confidence (15%)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,9 +64,10 @@
                         <tr>
                             <th scope="row" class="text-center">{{ $rank->seqno }}</th>
                             <td>{{ $rank->Contestants }}</td>
-                            <td class="text-center">{{ $rank->intelligence }}</td>
-                            <td class="text-center">{{ $rank->outlook }}</td>
-                            <td class="text-center">{{ $rank->performance }}</td>
+                            <td class="text-center">{{ $rank->creativity }}</td>
+                            <td class="text-center">{{ $rank->ethnicity }}</td>
+                            <td class="text-center">{{ $rank->fitness }}</td>
+                            <td class="text-center">{{ $rank->confidence }}</td>
                             <td class="text-center">{{ $rank->TOTAL }}%</td>
                         </tr>
                     @endforeach

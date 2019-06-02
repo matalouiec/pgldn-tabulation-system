@@ -13,7 +13,7 @@ import axios from "axios";
 import "chart.piecelabel.js";
 
 export default {
-  props: ["round", "catid"],
+  props: ["levelid", "catid"],
   components: {
     "doughnut-chart": DoughnutChart
   },
@@ -36,7 +36,7 @@ export default {
   methods: {
     getStats: function() {
       axios
-        .get("/round/PercentageStats/1")
+        .get("/round/PercentageStats/" + this.levelid + "/" + this.catid)
         .then(response => {
           let stats = response.data.stats;
           let total = response.data.total;
@@ -47,10 +47,7 @@ export default {
             datasets: [
               {
                 label: "Finalize Scores",
-                backgroundColor: [
-                  "rgba(22,218,245)",
-                  "rgba(204, 230, 254,0.9)"
-                ],
+                backgroundColor: ["#90ee90", "#add8e6"],
                 data: [stats, total],
                 borderColor: "#e3e6e1",
                 borderWidth: 1

@@ -13,6 +13,10 @@ Vue.component('judges-gauge', require('./components/AdminDashboardComponent/Judg
 Vue.component('judge-rank', require('./components/AdminDashboardComponent/JudgeRankComponent.vue').default);
 Vue.component('final-rank', require('./components/AdminDashboardComponent/FinalRankComponent.vue').default);
 
+Vue.component('festivalcostume', require('./components/AdminDashboardComponent/FestivalCostume.vue').default);
+Vue.component('festivalcostume-component', require('./components/AdminDashboardComponent/FestivalCostumeComponent.vue').default);
+
+Vue.component('prelim-fc', require('./components/AdminDashboardComponent/PrelimFC.vue').default);
 
 //Judges category component
 Vue.component('category-component', require('./components/JudgesCategoryComponent/JudgesCategoryComponent.vue').default);
@@ -47,6 +51,9 @@ Vue.component('question-answer-rank', require('./components/ScoreBoardCategory/Q
 
 //Preliminary Rounds
 Vue.component('preliminary-round', require('./components/PreliminaryComponent/PreliminaryRoundComponent.vue').default);
+
+//Reports
+Vue.component('per-category-report', require('./components/Reports/CategoryReportComponent.vue').default);
 
 // Utilities
 Vue.component('msgbox', require('./components/util/MsgBoxComponent.vue').default);

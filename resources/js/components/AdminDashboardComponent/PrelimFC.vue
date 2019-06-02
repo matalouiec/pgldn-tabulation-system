@@ -3,7 +3,7 @@
     <div class="card border-primary mb-3">
       <div class="card-header">
         {{ judge.name }}
-        <a :href="'/report/qa/'+judge.id" target="other" class="btn float-sm-right">
+        <a :href="'/report/fc/'+judge.id" target="other" class="btn float-sm-right">
           <i class="fas fa-print"></i>
         </a>
       </div>
@@ -40,7 +40,7 @@ export default {
   methods: {
     getIndividualRank: function() {
       axios
-        .get("/judges/qa/" + this.judge.id)
+        .get("/judges/fc/" + this.judge.id)
         .then(response => {
           this.ranks = response.data;
         })

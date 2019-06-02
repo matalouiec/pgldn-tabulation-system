@@ -3,12 +3,9 @@
     <div class="card border-success">
       <div class="card-header clearfix">
         <div class="card-title">
+          Festival Costumes
           <span class="badge"></span>
-          <a
-            :href="'/report/final-result/'+this.vwname"
-            target="other"
-            class="btn btn-default float-sm-right"
-          >
+          <a href="/report/festival-costume" target="other" class="btn btn-default float-sm-right">
             <i class="fas fa-print"></i>
           </a>
         </div>
@@ -47,7 +44,6 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["vwname"],
   data() {
     return {
       ranks: []
@@ -56,7 +52,7 @@ export default {
   methods: {
     fetchRank() {
       axios
-        .get("/report/final/" + this.vwname)
+        .get("/report/festivalcostume")
         .then(response => {
           this.ranks = response.data;
         })

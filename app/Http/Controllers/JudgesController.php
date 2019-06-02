@@ -50,4 +50,18 @@ class JudgesController extends Controller
 
         return response()->json($rank);
     }
+
+    public function getFC(Request $request){
+        DB::statement(DB::raw('set @prev_value:=NULL'));
+        DB::statement(DB::raw('set @row:=0'));
+
+        $rank = DB::table('vw_festivalcostume')
+                    ->where('Judge',$request->id)
+                    ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
+                                        WHEN @prev_value := TOTAL THEN @row := @row + 1
+                                        END AS seqno'),'Contestants','creativity','ethnicity','fitness','confidence','TOTAL'])
+                    ->get();
+
+        return response()->json($rank);
+    }
 }

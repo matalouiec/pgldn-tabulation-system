@@ -51,22 +51,20 @@ class RoundController extends Controller
 
     public function getPercentageStats(Request $request){
         $judge = User::where('is_admin','0')->count();
-        $category = Category::where('levelid',$request->id)->count();
+        $category = Category::where('levelid',$request->levelid)->where('id',$request->categoryid)->count();
         $contestant = Contestant::all()->count();
-
         $totalRatings = $judge*$category*$contestant;
 
         $percentage = Rating::join('category','rating.categoryid','=','category.id')
                             ->join('users','rating.judgeid','=','users.id')
-                            ->where('category.levelid',$request->id)
+                            ->where('category.levelid',$request->levelid)
+                            ->where('category.id',$request->categoryid)
                             ->where('rating.is_final','1')
                             ->count();
-        
         $result = array(
             'stats' => $percentage,
             'total' => $totalRatings
-        );
-                            
+        );               
         return response()->json($result);
     }
 

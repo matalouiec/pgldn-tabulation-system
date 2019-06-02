@@ -18,13 +18,13 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <center style="font-weight:bold;font-size:18px;font-family: Arial, Helvetica, sans-serif;">Final Result</center>
+                <center style="font-weight:bold;font-size:18px;font-family: Arial, Helvetica, sans-serif;">Festival Costume</center>
                 <br />
             </div>
         </div>
         <div class="row">
-            <per-category-report vwname="vw_qa"></per-category-report>
             <br />
+            <per-category-report vwname="vw_festivalcostume"></per-category-report>
         </div>
         <div class="row">
             <div class="col-md-4">
