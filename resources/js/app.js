@@ -16,7 +16,10 @@ Vue.component('final-rank', require('./components/AdminDashboardComponent/FinalR
 Vue.component('festivalcostume', require('./components/AdminDashboardComponent/FestivalCostume.vue').default);
 Vue.component('festivalcostume-component', require('./components/AdminDashboardComponent/FestivalCostumeComponent.vue').default);
 
+Vue.component('cocktaildress-component', require('./components/AdminDashboardComponent/CocktailDressComponent.vue').default);
+
 Vue.component('prelim-fc', require('./components/AdminDashboardComponent/PrelimFC.vue').default);
+Vue.component('prelim-cd', require('./components/AdminDashboardComponent/PrelimCD.vue').default);
 
 //Judges category component
 Vue.component('category-component', require('./components/JudgesCategoryComponent/JudgesCategoryComponent.vue').default);
