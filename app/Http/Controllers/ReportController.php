@@ -313,6 +313,27 @@ class ReportController extends Controller
         return view('reports.judges.individualranksw')->with('data',$payload);
     }
 
+    public function getIndividualRankReportMI(Request $request){
+        $id = $request->id;
+        $judge = User::find($id);
+        DB::statement(DB::raw('set @prev_value:=NULL'));
+        DB::statement(DB::raw('set @row:=0'));
+        $rank = DB::table('vw_maranao')
+                    ->where('Judge',$request->id)
+                    ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
+                                        WHEN @prev_value := TOTAL THEN @row := @row + 1
+                                        END AS seqno'),'isFinal','parent','backcolor','judge','Contestants','relevance','wearer','personality','elegance','face','TOTAL'])
+                    ->get();
+
+        $payload = array(
+            'judge' => $judge,
+            'rank'  => $rank,
+            'category' => 'Maranao Inspired Gown'
+        );
+        
+        return view('reports.judges.individualrankmi')->with('data',$payload);
+    }
+
     // ---------------- Final Rank per Category
     public function getFinalRankFestivalCostume(){
         $rank = DB::select("SELECT
