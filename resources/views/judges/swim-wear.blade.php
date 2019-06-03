@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-       SWIM WEAR
+       <swimwear-component></swimwear-component>
     </div>
 @endsection

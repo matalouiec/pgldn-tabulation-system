@@ -132,6 +132,18 @@ class ReportController extends Controller
                     $routeURL = "reports.admin.cocktaildress";
                     break;
 
+                case 'vw_swimwear':
+                    $routeURL = "reports.admin.swimwear";
+                    break;
+
+                case 'vw_maranao':
+                    $routeURL = "reports.admin.maranao";
+                    break;
+
+                case 'vw_interview':
+                    $routeURL = "reports.admin.interview";
+                    break;
+
                 default:
                     # code...
                     break;
@@ -278,6 +290,27 @@ class ReportController extends Controller
         );
         
         return view('reports.judges.individualrankcd')->with('data',$payload);
+    }
+
+    public function getIndividualRankReportSW(Request $request){
+        $id = $request->id;
+        $judge = User::find($id);
+        DB::statement(DB::raw('set @prev_value:=NULL'));
+        DB::statement(DB::raw('set @row:=0'));
+        $rank = DB::table('vw_swimwear')
+                    ->where('Judge',$request->id)
+                    ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
+                                        WHEN @prev_value := TOTAL THEN @row := @row + 1
+                                        END AS seqno'),'isFinal','parent','backcolor','judge','Contestants','figure','face','personality','impact','TOTAL'])
+                    ->get();
+
+        $payload = array(
+            'judge' => $judge,
+            'rank'  => $rank,
+            'category' => 'Swim Wear'
+        );
+        
+        return view('reports.judges.individualranksw')->with('data',$payload);
     }
 
     // ---------------- Final Rank per Category
