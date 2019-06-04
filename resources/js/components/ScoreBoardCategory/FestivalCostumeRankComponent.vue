@@ -5,7 +5,7 @@
         <div class="card-header">Best Festival Costume</div>
       </div>
       <div class="card-body">
-        <table class="table table-bordered table-striped table-hover">
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th class="text-center" rowspan="2">Rank</th>
@@ -34,7 +34,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="rank in rankList" v-bind:key="rank.id">
+            <tr
+              v-for="rank in rankList"
+              v-bind:key="rank.id"
+              v-bind:class="{ final: rank.isFinal==1 }"
+            >
               <th scope="row" class="text-center">{{ rank.seqno }}</th>
               <td>
                 <a
@@ -42,10 +46,7 @@
                   data-toggle="modal"
                   :data-target="'#MyModal'+rank.parent"
                   v-if="rank.isFinal==0"
-                >
-                  {{ rank.Contestants }}&nbsp;
-                  <i class="fa fa-lock-open" style="color:green;"></i>
-                </a>
+                >{{ rank.Contestants }}&nbsp;</a>
                 <a href="#" data-toggle="modal" data-target="#msgBox01" v-if="rank.isFinal==1">
                   {{ rank.Contestants }}&nbsp;
                   <i class="fa fa-lock" style="color:red;"></i>
@@ -92,3 +93,4 @@ export default {
   }
 };
 </script>
+

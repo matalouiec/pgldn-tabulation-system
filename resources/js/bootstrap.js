@@ -1,5 +1,6 @@
 
 window._ = require('lodash');
+window._ = require('material-icons');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12,7 +13,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

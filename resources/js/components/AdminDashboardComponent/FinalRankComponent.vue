@@ -9,7 +9,7 @@
             target="other"
             class="btn btn-default float-sm-right"
           >
-            <i class="fas fa-print"></i>
+            <span class="material-icons">print</span>
           </a>
         </div>
       </div>

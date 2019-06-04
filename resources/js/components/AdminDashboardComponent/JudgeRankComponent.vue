@@ -4,7 +4,7 @@
       <div class="card-header">
         {{ judge.name }}
         <a :href="'/report/qa/'+judge.id" target="other" class="btn float-sm-right">
-          <i class="fas fa-print"></i>
+          <span class="material-icons">print</span>
         </a>
       </div>
       <div class="card-body">
