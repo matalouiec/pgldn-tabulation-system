@@ -88,6 +88,7 @@ Route::get('/judges/fc/{id}','JudgesController@getFC')->middleware('auth');
 Route::get('/judges/cd/{id}','JudgesController@getCD')->middleware('auth');
 Route::get('/judges/sw/{id}','JudgesController@getSW')->middleware('auth');
 Route::get('/judges/mi/{id}','JudgesController@getMI')->middleware('auth');
+Route::get('/judges/pi/{id}','JudgesController@getPI')->middleware('auth');
 
 //Report Controller
 //Route::get('/report/juid/{id}','ReportController@getIndividualRankReportQA')->middleware('auth');
@@ -96,6 +97,7 @@ Route::get('/report/fc/{id}','ReportController@getIndividualRankReportFC')->midd
 Route::get('/report/cd/{id}','ReportController@getIndividualRankReportCD')->middleware('auth');
 Route::get('/report/sw/{id}','ReportController@getIndividualRankReportSW')->middleware('auth');
 Route::get('/report/mi/{id}','ReportController@getIndividualRankReportMI')->middleware('auth');
+Route::get('/report/pi/{id}','ReportController@getIndividualRankReportPI')->middleware('auth');
 
 Route::get('/report/final-result/{vwname}','ReportController@getFinalReport')->middleware('auth');
 Route::get('/report/festival-costume','ReportController@getFinalReportFC')->middleware('auth');

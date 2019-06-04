@@ -25,6 +25,7 @@ Vue.component('prelim-fc', require('./components/AdminDashboardComponent/PrelimF
 Vue.component('prelim-cd', require('./components/AdminDashboardComponent/PrelimCD.vue').default);
 Vue.component('prelim-sw', require('./components/AdminDashboardComponent/PrelimSW.vue').default);
 Vue.component('prelim-mi', require('./components/AdminDashboardComponent/PrelimMI.vue').default);
+Vue.component('prelim-pi', require('./components/AdminDashboardComponent/PrelimPI.vue').default);
 
 //Judges category component
 Vue.component('category-component', require('./components/JudgesCategoryComponent/JudgesCategoryComponent.vue').default);

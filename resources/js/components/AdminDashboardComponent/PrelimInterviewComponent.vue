@@ -11,12 +11,12 @@
             </div>
             <br>
             <div class="row">
-              <!-- <prelim-mi
+              <prelim-pi
                 v-for="judge in judgesList"
                 :key="judge.id"
                 :judge="judge"
                 style="margin-top:20px;"
-              ></prelim-mi>-->
+              ></prelim-pi>
             </div>
           </div>
         </div>

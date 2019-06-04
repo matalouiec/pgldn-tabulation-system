@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ env('app_name') }}</title>
+        <title>Miss Lanao del Norte 2019</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -15,7 +15,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                /* background-image: url("/storage/img/background.png"); */
+                background-image: url("/storage/img/beauty.jpg"); */
                 /* background-color: #dcf1d6; */
                 background-position: center center;  
                 color: #636b6f;
@@ -51,10 +51,18 @@
 
             .title {
                 font-size: 90px;
-                color:grey;
+                color:#ff2015;
                 font-weight:bold;
                 font-family: serif;
                 font-style:italic;
+            }
+            .subtitle {
+                font-size: 30px;
+                color:black;
+                font-weight:bold;
+                font-family: serif;
+                font-style:italic;
+                text-align:left;
             }
 
             .links > a {
@@ -75,8 +83,11 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
+                <div class="subtitle">
+                    Search for
+                </div>
                 <div class="title m-b-md">
-                    {{ env('app_name') }}<br />
+                    Miss Lanao del Norte 2019<br />
                 </div>
                 @if (Route::has('login'))
                     <div class="start">

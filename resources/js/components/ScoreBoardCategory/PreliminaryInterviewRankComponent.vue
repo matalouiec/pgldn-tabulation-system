@@ -12,7 +12,7 @@
               <th class="text-center" rowspan="2">Contestants</th>
               <th
                 class="text-center"
-                colspan="2"
+                colspan="3"
                 style="background:rgba(64, 160, 255,0.5);"
               >CRITERIA FOR JUDGING</th>
               <th class="text-center" rowspan="2">TOTAL (100%)</th>
@@ -21,11 +21,12 @@
               <th
                 class="text-center"
                 title="Personal Outlook (Beauty of Face)"
-              >Personal Outlook (Beauty of Face) (50%)</th>
+              >Personal Outlook (Beauty of Face) (40%)</th>
               <th
                 class="text-center"
                 title="Intelligence (Content, Grammar & Pronunciation)"
-              >Intelligence (Content, Grammar & Pronunciation) (50%)</th>
+              >Intelligence (Content, Grammar & Pronunciation) (30%)</th>
+              <th class="text-center" title="Overall Performance">Overall Performance (30%)</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@
               </td>
               <td class="text-center">{{ rank.outlook }}</td>
               <td class="text-center">{{ rank.intelligence }}</td>
+              <td class="text-center">{{ rank.performance }}</td>
               <td class="text-center">{{ rank.TOTAL.toFixed(2) }}%</td>
             </tr>
           </tbody>
