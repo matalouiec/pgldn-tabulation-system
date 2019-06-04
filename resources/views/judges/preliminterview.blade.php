@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-       PRELIM INTERVIEW
+       <preliminterview-component></preliminterview-component>
     </div>
 @endsection

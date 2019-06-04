@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card card-default">
       <div class="card-title">
-        <div class="card-header">Best in Festival Costume</div>
+        <div class="card-header">Best Festival Costume</div>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped table-hover">
