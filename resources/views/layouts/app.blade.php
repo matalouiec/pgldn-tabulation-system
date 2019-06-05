@@ -27,14 +27,14 @@
                         @if(Auth::check())
                             @can('admin-only', Auth::user())
                                 <li class="nav-item"><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="{{ url('/preliminary/prelim-interview') }}">Preliminary Interview</a></li> 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Preliminary</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Special Awards</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{ url('/preliminary/festival-costume') }}">Festival Costume</a>
                                         <a class="dropdown-item" href="{{ url('/preliminary/cocktail-dress') }}">Cocktail Dress</a>
                                         <a class="dropdown-item" href="{{ url('/preliminary/swim-wear') }}">Swim Wear</a>
                                         <a class="dropdown-item" href="{{ url('/preliminary/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
-                                        <a class="dropdown-item" href="{{ url('/preliminary/prelim-interview') }}">Preliminary Interview</a>
                                     </div>
                                 </li>                           
                                 <li class="nav-item dropdown">
