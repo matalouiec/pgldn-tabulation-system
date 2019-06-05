@@ -30,7 +30,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="rank in rankList" v-bind:key="rank.id">
+            <tr
+              v-for="rank in rankList"
+              v-bind:key="rank.id"
+              v-bind:class="{ final: rank.isFinal==1 }"
+            >
               <th scope="row" class="text-center">{{ rank.seqno }}</th>
               <td>
                 <a
@@ -38,14 +42,13 @@
                   data-toggle="modal"
                   :data-target="'#MyModal'+rank.parent"
                   v-if="rank.isFinal==0"
-                >
-                  {{ rank.Contestants }}&nbsp;
-                  <i class="fa fa-lock-open" style="color:green;"></i>
-                </a>
-                <a href="#" data-toggle="modal" data-target="#msgBox01" v-if="rank.isFinal==1">
-                  {{ rank.Contestants }}&nbsp;
-                  <i class="fa fa-lock" style="color:red;"></i>
-                </a>
+                >{{ rank.Contestants }}&nbsp;</a>
+                <a
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#msgBox01"
+                  v-if="rank.isFinal==1"
+                >{{ rank.Contestants }}&nbsp;</a>
               </td>
               <td class="text-center">{{ rank.outlook }}</td>
               <td class="text-center">{{ rank.intelligence }}</td>
