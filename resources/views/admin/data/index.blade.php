@@ -1,6 +1,6 @@
-@extends('layouts.app');
+@extends('layouts.app')
 @section('content')
-<div class="container-fluid">
-    <h1>This is where unlocking of score took place</h1>
-</div>
+    <div class="container-fluid">
+        <data-controller></data-controller>
+    </div>
 @endsection

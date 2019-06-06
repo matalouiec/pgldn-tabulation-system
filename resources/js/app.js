@@ -4,6 +4,7 @@ window.Vue = require('vue');
 import Notifications from 'vue-notification';
 import velocity from 'velocity-animate';
 import VeeValidate from 'vee-validate';
+import { store } from './store/store';
 
 //Admin Dashboard component
 Vue.component('dashboard-component', require('./components/AdminDashboardComponent/DashboardComponent.vue').default);
@@ -61,6 +62,10 @@ Vue.component('question-answer-rank', require('./components/ScoreBoardCategory/Q
 //Preliminary Rounds
 Vue.component('preliminary-round', require('./components/PreliminaryComponent/PreliminaryRoundComponent.vue').default);
 
+//Data Controller
+Vue.component('data-controller', require('./components/DataController/MainViewComponent.vue').default);
+Vue.component('data-judges-list', require('./components/DataController/JudgesList.vue').default);
+
 //Reports
 Vue.component('per-category-report', require('./components/Reports/CategoryReportComponent.vue').default);
 
@@ -71,5 +76,6 @@ Vue.use(VeeValidate);
 
 //MAIN
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
