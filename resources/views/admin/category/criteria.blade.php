@@ -9,7 +9,7 @@
                     @include('includes.messages')
                     <!-- Button trigger modal -->
                     <a href="{{ url('/category') }}" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
-                    <button id="btnAddCriteria" type="button" class="btn btn-primary" data-toggle="modal" data-categoryid="{{ $data['category']->id }}">
+                    <button id="btnAddCriteria" type="button" class="btn btn-primary" data-target="#addCriteriaWindow" data-toggle="modal" data-categoryid="{{ $data['category']->id }}">
                         <span class="glyphicon glyphicon-plus"></span> Add New
                     </button>
                     <br />
@@ -29,10 +29,10 @@
                                         <td style="color:red;font-weight:bold;">{{ $criteria->percentage }} %</td>
                                         <td>
                                             <a href="" title="Edit">
-                                                <span class="glyphicon glyphicon-edit"></span>
+                                                <span class="material-icons">edit</span>
                                             </a>
                                             <a href="" title="Delete">
-                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <span class="material-icons">delete</span>
                                                 </a>
                                         </td>
                                     </tr>
@@ -70,10 +70,7 @@
                 </div>
                 <div class="form-group">
                         {{ Form::label('percentage','Percentage') }}
-                        {{ Form::number('percentage','',['class' => 'form-control','placeholder' => 'percentage','id' => 'percentage','style' => 'font-weight:bold;font-size:20px;']) }}
-                        <div class="form-control" style="margin-top:2px;">
-                            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
-                        </div>
+                        {{ Form::number('percentage','',['class' => 'form-control','placeholder' => '0','id' => 'percentage','style' => 'font-weight:bold;font-size:20px;']) }}
                 </div>
             </div>
             <div class="modal-footer">

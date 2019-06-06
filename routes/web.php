@@ -105,3 +105,6 @@ Route::get('/report/festival-costume','ReportController@getFinalReportFC')->midd
 Route::get('/report/final/{vwname}','ReportController@getFinalRankReport')->middleware('auth');
 Route::get('/report/festivalcostume','ReportController@getFinalRankFestivalCostume')->middleware('auth');
 Route::get('/report/test','ReportController@testPDF')->middleware('auth');
+
+// Data Controller
+Route::get('/data-controller','DataController@index')->middleware('auth');

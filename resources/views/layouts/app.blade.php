@@ -36,7 +36,8 @@
                                         <a class="dropdown-item" href="{{ url('/preliminary/swim-wear') }}">Swim Wear</a>
                                         <a class="dropdown-item" href="{{ url('/preliminary/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
                                     </div>
-                                </li>                           
+                                </li>    
+                                <li class="nav-item"><a class="nav-link" href="{{ url('/data-controller') }}">Data Controller</a></li>                        
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Masterdata</a>
                                     <div class="dropdown-menu">
