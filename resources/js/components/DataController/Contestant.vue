@@ -16,6 +16,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import axios from "axios";
 export default {
   props: {
     rating: {
@@ -27,25 +28,26 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(["toggleScoreState"]),
-
     toggleCheck(score) {
-      let res = this.toggleScoreState(score.id);
-      if (res) {
-        this.$notify({
-          group: "app-notification",
-          type: "information",
-          title: "Success!!!",
-          text: "Change State"
+      axios
+        .post("/rating/change-state", { ratingid: score.id })
+        .then(response => {
+          if (response.data && response.status == 200) {
+            this.$notify({
+              group: "app-notification",
+              type: "information",
+              title: "Success!!!",
+              text: "Change State"
+            });
+          } else {
+            this.$notify({
+              group: "app-notification",
+              type: "error",
+              title: "Failed!!!",
+              text: "Failure to change state"
+            });
+          }
         });
-      } else {
-        this.$notify({
-          group: "app-notification",
-          type: "error",
-          title: "Failed!!!",
-          text: "Failure to change state"
-        });
-      }
     }
   }
 };
