@@ -2,9 +2,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Notifications from 'vue-notification';
+import BootstrapVue from 'bootstrap-vue'
 import velocity from 'velocity-animate';
 import VeeValidate from 'vee-validate';
 import { store } from './store/store';
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 //Admin Dashboard component
 Vue.component('dashboard-component', require('./components/AdminDashboardComponent/DashboardComponent.vue').default);
@@ -65,13 +69,17 @@ Vue.component('preliminary-round', require('./components/PreliminaryComponent/Pr
 //Data Controller
 Vue.component('data-controller', require('./components/DataController/MainViewComponent.vue').default);
 Vue.component('data-judges-list', require('./components/DataController/JudgesList.vue').default);
+Vue.component('data-contestant-tile', require('./components/DataController/Contestant.vue').default);
 
 //Reports
 Vue.component('per-category-report', require('./components/Reports/CategoryReportComponent.vue').default);
 
 // Utilities
 Vue.component('msgbox', require('./components/util/MsgBoxComponent.vue').default);
+
+
 Vue.use(Notifications, { velocity });
+Vue.use(BootstrapVue)
 Vue.use(VeeValidate);
 
 //MAIN

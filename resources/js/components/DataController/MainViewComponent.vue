@@ -7,14 +7,19 @@
             <data-judges-list></data-judges-list>
           </div>
           <div class="col-md-8">
-            <div class="card">
-              <div class="card-header">Featured</div>
+            <div v-for="category in filteredCategories" :key="category.id" class="card border-info">
+              <b class="card-header">
+                {{ category.name }}
+                <span
+                  class="badge badge-primary badge-pill"
+                >{{ category.counter }}</span>
+              </b>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p
-                  class="card-text"
-                >With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <data-contestant-tile
+                  v-for="rating in category.ratings"
+                  :key="rating.id"
+                  :rating="rating"
+                ></data-contestant-tile>
               </div>
             </div>
           </div>
@@ -32,7 +37,12 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["selectedJudgeInfo"])
+    ...mapGetters(["selectedJudgeInfo", "filteredCategories"])
   }
 };
 </script>
+<style scoped>
+.card {
+  margin-bottom: 10px;
+}
+</style>

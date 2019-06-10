@@ -2,7 +2,7 @@
   <div class="list-group">
     <button
       v-for="judge in judgesList"
-      v-on:click="setSelectedJudge(judge)"
+      v-on:click="onJudgeClick(judge)"
       :key="judge.id"
       type="button"
       class="list-group-item list-group-item-action"
@@ -21,7 +21,11 @@ export default {
     ...mapGetters(["judgesList", "selectedJudgeInfo"])
   },
   methods: {
-    ...mapActions(["fetchJudges", "setSelectedJudge"])
+    ...mapActions(["fetchJudges", "setSelectedJudge", "fetchCategories"]),
+    onJudgeClick(x) {
+      this.setSelectedJudge(x); //trigger change on active button
+      this.fetchCategories(x.id); //triggers the change on categories
+    }
   },
   created() {
     this.fetchJudges();

@@ -2,16 +2,12 @@ import axios from 'axios';
 
 const state = {
     judges: [],
-    selectedJudge: [],
-    categories: []
+    selectedJudge: []
 }
 
 const mutations = {
     SET_JUDGES(state, judges) {
         state.judges = judges;
-    },
-    SET_CATEGORIES(state, categories) {
-        state.categories = categories;
     },
     SET_SELECTED_JUDGE(state, judge) {
         state.selectedJudge = judge;
@@ -23,9 +19,6 @@ const actions = {
         axios.get('/judges').then(response => {
             context.commit('SET_JUDGES', response.data)
         })
-    },
-    fetchCategories(context, payload) {
-        axios.get()
     },
     setSelectedJudge(context, payload) {
         context.commit('SET_SELECTED_JUDGE', payload)

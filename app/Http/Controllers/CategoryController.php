@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\SubCategory;
 use App\Level;
 use App\Criteria;
+use App\Rating;
 use Illuminate\Http\Request;
 use Response;
 use View;
@@ -171,5 +173,26 @@ class CategoryController extends Controller
     {
         $criterias = Category::find($category->id)->criterias;
         return $criterias;
+    }
+
+    public function getCategoriesByJudgeId(Request $request){
+        $data['categories'] = [];
+        $categories = Rating::join('category','category.id','=','rating.categoryid')
+                        ->select('category.id','category.name',DB::raw('count(rating.contestantid)AS counter'))
+                        ->where('rating.judgeid',$request->id)
+                        ->groupBy('category.id')
+                        ->get();
+
+        foreach($categories as $key => $value){
+            $ratings = Rating::join('contestant','contestant.id','=','rating.contestantid')
+                                ->where('categoryid',$categories[$key]->id)
+                                ->where('rating.judgeid',$request->id)
+                                ->get(["rating.id","rating.is_final","rating.totalrating","contestant.number","contestant.name","contestant.cover_image"]);
+
+            $categories[$key]['ratings'] = $ratings;
+            array_push($data['categories'],$categories[$key]);
+        }
+
+        return response()->json($data);
     }
 }
