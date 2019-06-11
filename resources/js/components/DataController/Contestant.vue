@@ -35,7 +35,7 @@ export default {
           if (response.data && response.status == 200) {
             this.$notify({
               group: "app-notification",
-              type: "information",
+              type: "success",
               title: "Success!!!",
               text: "Change State"
             });

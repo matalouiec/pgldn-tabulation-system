@@ -109,3 +109,6 @@ Route::get('/report/test','ReportController@testPDF')->middleware('auth');
 Route::get('/data-controller','DataController@index')->middleware('auth');
 Route::get('/data-controller/category/{id}','CategoryController@getCategoriesByJudgeId')->middleware('auth');
 Route::post('/rating/change-state','RatingController@toggleRatingState')->middleware('auth');
+
+// Top 5 Finalist
+Route::get('/top-five','TopFiveController@index')->middleware('auth');

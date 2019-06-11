@@ -6,13 +6,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Miss Lanao del Norte 2019</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
     <link rel="stylesheet" href="{{ asset('css/material-icons.min.css') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
             <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name','') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,10 +39,11 @@
                                         <a class="dropdown-item" href="{{ url('/preliminary/maranao-inspired-gown') }}">Maranao Inspired Gown</a>
                                     </div>
                                 </li>    
-                                <li class="nav-item"><a class="nav-link" href="{{ url('/data-controller') }}">Data Controller</a></li>                        
+                                <li class="nav-item"><a class="nav-link" href="{{ url('/data-controller') }}">Data Controller</a></li>                                        
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Masterdata</a>
                                     <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('/top-five') }}">Top 5</a>
                                         <a class="dropdown-item" href="{{ url('/category') }}">Category</a>
                                         <a class="dropdown-item" href="{{ url('/contestant') }}">Contestants</a>
                                         <a class="dropdown-item" href="{{ url('/round') }}">Stages of Competition</a>
