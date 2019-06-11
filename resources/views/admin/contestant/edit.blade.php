@@ -7,7 +7,7 @@
                 <div class="panel-heading">Contestant - Edit</div>
                 <div class="panel-body">
                     @include('includes.messages')
-                    {!! Form::open(['action' => ['ContestantController@update',$contestant->id],'method' => 'POST','enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['action' => ['ContestantController@update',$contestant->id],'method' => 'PUT','enctype' => 'multipart/form-data']) !!}
                         <div class="form-group">
                             {{Form::label('number','Sequence Number') }}
                             {{Form::text('number',$contestant->number,['class' => 'form-control','placeholder' => 'Sequence number'])}}
@@ -21,7 +21,7 @@
                             {{Form::text('representing',$contestant->representing,['class' => 'form-control','placeholder' => 'Representing'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('age','No. of Members') }}
+                            {{Form::label('age','Age') }}
                             {{Form::text('age',$contestant->age,['class' => 'form-control','placeholder' => 'Current age'])}}
                         </div>
                         <div class="form-group">

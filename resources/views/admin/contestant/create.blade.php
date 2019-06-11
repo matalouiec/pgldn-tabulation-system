@@ -21,7 +21,7 @@
                             {{Form::text('representing','',['class' => 'form-control','placeholder' => 'Representing'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('age','No. of Members') }}
+                            {{Form::label('age','Age') }}
                             {{Form::text('age','',['class' => 'form-control','placeholder' => 'Current age'])}}
                         </div>
                         <div class="form-group">

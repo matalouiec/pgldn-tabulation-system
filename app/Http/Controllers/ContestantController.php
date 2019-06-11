@@ -103,7 +103,15 @@ class ContestantController extends Controller
      */
     public function update(Request $request, Contestant $contestant)
     {
-        //
+        $row = Contestant::find($contestant->id);
+        $row->number = $request->number;
+        $row->age = $request->age;
+        $row->name = $request->name;
+        $row->representing = $request->representing;
+        $row->short_description=$request->short_description;
+        $row->update();
+
+        return redirect('/contestant')->with('success','Saved');
     }
 
     /**
