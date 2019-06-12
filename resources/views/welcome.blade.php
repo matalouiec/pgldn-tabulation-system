@@ -3,15 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Miss Lanao del Norte 2019</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
         <!-- Styles -->
         <style>
             html, body {

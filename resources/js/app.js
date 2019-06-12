@@ -7,8 +7,7 @@ import velocity from 'velocity-animate';
 import VeeValidate from 'vee-validate';
 import { store } from './store/store';
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 //Admin Dashboard component
 Vue.component('dashboard-component', require('./components/AdminDashboardComponent/DashboardComponent.vue').default);

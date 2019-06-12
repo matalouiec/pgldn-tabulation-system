@@ -115,10 +115,7 @@
             data-dismiss="modal"
             aria-label="Left Align"
             @click="onFormSubmit"
-          >
-            <span class="glyphicon glyphicon-floppy-disk" arial-hidden="true"></span>
-            Save
-          </button>
+          >Save</button>
           <button
             v-bind:disabled="errors.items.length>0"
             type="button"
@@ -126,10 +123,7 @@
             data-dismiss="modal"
             aria-label="Left Align"
             @click="finalizeRating"
-          >
-            <span class="glyphicon glyphicon-ok" arial-hidden="true"></span>
-            Save & Lock
-          </button>
+          >Final</button>
         </div>
       </div>
     </div>

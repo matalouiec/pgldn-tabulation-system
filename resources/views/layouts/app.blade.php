@@ -9,13 +9,13 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
     <link rel="stylesheet" href="{{ asset('css/material-icons.min.css') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('storage/style/bootstrap.material.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name','') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -24,7 +24,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="navbar-nav mr-auto">
                         &nbsp;
                         @if(Auth::check())
                             @can('admin-only', Auth::user())
@@ -117,7 +117,7 @@
             </div>
         </nav>
 
-        <main class="py-4" style="margin-top:45px;">
+        <main class="py-4" style="margin-top:65px;">
             @yield('content')
             <notifications group="app-notification" position="bottom right" animation-type="velocity"/>
         </main>
