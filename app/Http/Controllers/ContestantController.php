@@ -128,4 +128,9 @@ class ContestantController extends Controller
     public function contestantSelection(){
         return view('admin.contestant.contestantselection');
     }
+
+    public function getAllContestants(){
+        $contestants = Contestant::all();
+        return response()->json($contestants);
+    }
 }

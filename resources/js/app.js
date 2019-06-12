@@ -70,6 +70,11 @@ Vue.component('data-controller', require('./components/DataController/MainViewCo
 Vue.component('data-judges-list', require('./components/DataController/JudgesList.vue').default);
 Vue.component('data-contestant-tile', require('./components/DataController/Contestant.vue').default);
 
+//Top Five
+Vue.component('top-five', require('./components/TopFive/TopFiveComponent.vue').default);
+Vue.component('contestant-list', require('./components/TopFive/ContestantList.vue').default);
+
+
 //Reports
 Vue.component('per-category-report', require('./components/Reports/CategoryReportComponent.vue').default);
 

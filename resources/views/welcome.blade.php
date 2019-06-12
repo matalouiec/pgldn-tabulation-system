@@ -90,7 +90,7 @@
                         @auth
                             <a class="btn btn-primary btn-lg" role="button" href="{{ url('/dashboard') }}">SCORE CARD</a>   
                         @else
-                            <a class="btn btn-primary btn-lg" role="button" href="{{ route('login') }}">START</a>
+                            <a class="btn btn-primary btn-lg" role="button" href="{{ route('login') }}">LOG IN</a>
                         @endauth
                     </div>
                 @endif

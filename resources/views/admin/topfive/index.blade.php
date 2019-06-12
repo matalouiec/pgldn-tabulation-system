@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-       Top Five
+       <top-five></top-five>
     </div>
 @endsection

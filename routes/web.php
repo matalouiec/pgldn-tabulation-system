@@ -23,6 +23,7 @@ Route::get('/category/{category}','CategoryController@show')->middleware('auth')
 // Contestant Routes
 Route::resource('contestant','ContestantController')->middleware('auth');
 Route::get('contestant-selection','ContestantController@contestantSelection')->middleware('auth');
+Route::get('/api/contestants','ContestantController@getAllContestants')->middleware('auth');
 
 // Criteria Routes
 Route::resource('criteria','CriteriaController')->middleware('auth');
