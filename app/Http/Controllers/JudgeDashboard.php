@@ -24,13 +24,25 @@ class JudgeDashboard extends Controller
     }
 
     public function getActiveCategory(){
-        //$userid = Auth::user()->id;
         $userid = Auth::id();
-        $categories = Category::where('is_active','=',1)->get();
+        $categories = Category::where('is_active',1)->where('levelid',3)->get();
         $data['categories'] = [];
 
         foreach ($categories as $key => $value) {
             $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid)',['judgeid' => $userid,'categoryid' => $categories[$key]->id]);
+            $categories[$key]['contestants'] = $contestant;
+            array_push($data['categories'],$categories[$key]);
+        }
+        return response()->json($data);
+    }
+
+    public function getActiveFinalCategory(){
+        $userid = Auth::id();
+        $categories = Category::where('is_active',1)->where('levelid',1)->get();
+        $data['categories'] = [];
+
+        foreach ($categories as $key => $value) {
+            $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid) and c.id in (SELECT f.contestantid from finalist f)',['judgeid' => $userid,'categoryid' => $categories[$key]->id]);
             $categories[$key]['contestants'] = $contestant;
             array_push($data['categories'],$categories[$key]);
         }

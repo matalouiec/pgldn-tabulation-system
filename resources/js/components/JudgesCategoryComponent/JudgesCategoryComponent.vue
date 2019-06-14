@@ -28,6 +28,31 @@
         </div>
       </div>
     </div>
+    <div class="row" v-for="fc in finalCategories" :key="fc.id">
+      <div class="col-md-12">
+        <div class="card border-warning mb-3">
+          <div class="card-header">{{ fc.name }}</div>
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row" v-if="fc.contestants.length > 0">
+                <contestant-thumbnail
+                  v-for="contestant in fc.contestants"
+                  :key="contestant.id"
+                  v-bind:data="contestant"
+                  :category="fc"
+                  :contestant="contestant"
+                ></contestant-thumbnail>
+              </div>
+              <div v-else>
+                <center>
+                  <a :href="fc.link" class="btn btn-info">VIEW SCORES</a>
+                </center>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -35,13 +60,20 @@ import axios from "axios";
 export default {
   data() {
     return {
-      categories: []
+      categories: [],
+      finalCategories: []
     };
   },
   mounted: function() {
     this.fetchCategory();
+    this.fetchFinalCategory();
+
     setInterval(() => {
       this.fetchCategory();
+    }, 2000);
+
+    setInterval(() => {
+      this.fetchFinalCategory();
     }, 2000);
   },
   methods: {
@@ -50,6 +82,16 @@ export default {
         .get("/judge-dashboard/getActiveCategory")
         .then(response => {
           this.categories = response.data.categories;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    fetchFinalCategory: function() {
+      axios
+        .get("/judge-dashboard/getActiveFinalCategory")
+        .then(response => {
+          this.finalCategories = response.data.categories;
         })
         .catch(e => {
           console.log(e);

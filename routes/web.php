@@ -39,6 +39,7 @@ Route::get('/round/FinakRank/{id}','RoundController@getFinalRanking')->middlewar
 // Judges Dashboard
 Route::get('/judge-dashboard', 'JudgeDashboard@index')->middleware('auth');
 Route::get('/judge-dashboard/getActiveCategory','JudgeDashboard@getActiveCategory');
+Route::get('/judge-dashboard/getActiveFinalCategory','JudgeDashboard@getActiveFinalCategory');
 Route::get('/judge-dashboard/category/{category}', 'JudgeDashboard@show')->middleware('auth');
 Route::get('/judge-dashboard/category/criteria/{category}', 'JudgeDashboard@getCriteria')->middleware('auth');
 Route::post('/judge-dashboard/rating','JudgeDashboard@createRatingHeader')->middleware('auth');
