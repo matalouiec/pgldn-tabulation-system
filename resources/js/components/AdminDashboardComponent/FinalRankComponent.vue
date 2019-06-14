@@ -1,13 +1,21 @@
 <template>
   <div class="col-md-8">
-    <div class="card border-success">
+    <div class="card border-primary">
       <div class="card-header clearfix">
         <div class="card-title">
-          <span class="badge"></span>
+          <button
+            class="btn btn-info float-sm-right"
+            v-on:click="saveRank()"
+            data-toggle="modal"
+            data-target="#msgBox1"
+          >
+            <span class="material-icons">check_circle</span>
+          </button>
           <a
             :href="'/report/final-result/'+this.vwname"
             target="other"
-            class="btn btn-default float-sm-right"
+            class="btn btn-success float-sm-right"
+            style="margin:1px;"
           >
             <span class="material-icons">print</span>
           </a>
@@ -42,6 +50,7 @@
         </table>
       </div>
     </div>
+    <msgbox :params="msgbox" :data="data"></msgbox>
   </div>
 </template>
 <script>
@@ -50,7 +59,13 @@ export default {
   props: ["vwname"],
   data() {
     return {
-      ranks: []
+      ranks: [],
+      msgbox: {
+        title: "Confirm",
+        message: "Confirm saving rank?",
+        type: "confirm"
+      },
+      data: { id: 1 }
     };
   },
   methods: {
@@ -63,8 +78,10 @@ export default {
         .catch(err => {
           return err;
         });
-    }
+    },
+    saveRank() {}
   },
+
   created() {
     this.fetchRank();
     setInterval(() => {

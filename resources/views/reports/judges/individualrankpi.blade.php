@@ -49,13 +49,11 @@
                     <tr>
                         <th class="text-center" rowspan="2">Rank</th>
                         <th class="text-center" rowspan="2">Contestant</th>
-                        <th class="text-center" colspan="3" style="background:rgba(64, 160, 255,0.5);">CRITERIA</th>
+                        <th class="text-center" colspan="1" style="background:rgba(64, 160, 255,0.5);">CRITERIA</th>
                         <th class="text-center" rowspan="0">TOTAL (100%)</th>
                     </tr>
                     <tr>
-                        <th class="text-center">Beauty of the face (40%)</th>
                         <th class="text-center">Intelligence (30%)</th>
-                        <th class="text-center">Overall Performance (30%)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,9 +61,7 @@
                         <tr>
                             <th scope="row" class="text-center">{{ $rank->seqno }}</th>
                             <td>{{ $rank->Contestants }}</td>
-                            <td class="text-center">{{ $rank->outlook }}</td>
                             <td class="text-center">{{ $rank->intelligence }}</td>
-                            <td class="text-center">{{ $rank->performance }}</td>
                             <td class="text-center">{{ $rank->TOTAL }}%</td>
                         </tr>
                     @endforeach

@@ -66,14 +66,8 @@ export default {
   },
   mounted: function() {
     this.fetchCategory();
-    this.fetchFinalCategory();
-
     setInterval(() => {
       this.fetchCategory();
-    }, 2000);
-
-    setInterval(() => {
-      this.fetchFinalCategory();
     }, 2000);
   },
   methods: {

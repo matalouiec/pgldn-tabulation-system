@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-3">
     <div
-      class="card border-success mb-3"
+      class="card border-primary mb-3"
       data-toggle="modal"
       :data-target="'#myModal'+contestant.id+category.id"
     >

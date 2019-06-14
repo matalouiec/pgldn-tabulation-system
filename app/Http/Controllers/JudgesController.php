@@ -115,7 +115,7 @@ class JudgesController extends Controller
                     ->where('Judge',$request->id)
                     ->select([DB::raw('CASE WHEN @prev_value = TOTAL THEN @row
                                         WHEN @prev_value := TOTAL THEN @row := @row + 1
-                                        END AS seqno'),'Contestants','outlook','intelligence','performance','TOTAL'])
+                                        END AS seqno'),'Contestants','intelligence','TOTAL'])
                     ->get();
 
         return response()->json($rank);

@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-8">
-    <div class="card border-success">
+    <div class="card border-primary">
       <div class="card-header clearfix">
         <div class="card-title">
           Festival Costumes
