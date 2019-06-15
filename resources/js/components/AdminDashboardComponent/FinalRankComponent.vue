@@ -3,22 +3,9 @@
     <div class="card border-primary">
       <div class="card-header clearfix">
         <div class="card-title">
-          <button
-            class="btn btn-info float-sm-right"
-            v-on:click="saveRank()"
-            data-toggle="modal"
-            data-target="#msgBox1"
-          >
-            <span class="material-icons">check_circle</span>
-          </button>
-          <a
-            :href="'/report/final-result/'+this.vwname"
-            target="other"
-            class="btn btn-success float-sm-right"
-            style="margin:1px;"
-          >
+          <button class="btn btn-info float-sm-right" v-on:click="saveRank">
             <span class="material-icons">print</span>
-          </a>
+          </button>
         </div>
       </div>
       <div class="card-body">
@@ -79,7 +66,16 @@ export default {
           return err;
         });
     },
-    saveRank() {}
+    saveRank() {
+      axios
+        .post("/api/finals/rank", { payload: this.ranks })
+        .then(res => {
+          if (res.data.status == true) {
+            window.location.href = "/report/final-result/" + this.vwname;
+          }
+        })
+        .catch(err => console.log(err));
+    }
   },
 
   created() {
