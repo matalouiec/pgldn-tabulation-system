@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Rank;
 use function GuzzleHttp\json_decode;
@@ -20,8 +21,74 @@ class RankController extends Controller
 
     public function index()
     {
-        $rank = Rank::all();
-        return response()->json($rank);
+        $result = DB::select("SELECT
+            CASE
+            WHEN @prev_val = y.T THEN
+                @count
+            WHEN @prev_val := y.T THEN
+                @count :=@count + 1
+            END AS counter,
+            y.*
+            FROM
+                (
+                    SELECT
+                        x.id,
+                        x.number,
+                        x.`name`,
+                        sum(
+                            CASE
+                            WHEN x.categoryid = 15 THEN
+                                x.rank
+                            END
+                        )AS pi,
+                        sum(
+                            CASE
+                            WHEN x.categoryid = 16 THEN
+                                x.rank
+                            END
+                        )AS mig,
+                        sum(
+                            CASE
+                            WHEN x.categoryid = 17 THEN
+                                x.rank
+                            END
+                        )AS sw,
+                        sum(
+                            CASE
+                            WHEN x.categoryid = 18 THEN
+                                x.rank
+                            END
+                        )AS cd,
+                        sum(
+                            CASE
+                            WHEN x.categoryid = 19 THEN
+                                x.rank
+                            END
+                        )AS fc,
+                        ROUND(sum(x.rank) / 5, 2)AS T
+                    FROM
+                        (
+                            SELECT
+                                c.id,
+                                c.number,
+                                c.`name`,
+                                r.rank,
+                                r.categoryid
+                            FROM
+                                ranks r
+                            INNER JOIN contestant c ON r.contestantid = c.id
+                        )AS x
+                    GROUP BY
+                        x.id
+                    ORDER BY
+                        T ASC
+                )AS y,
+                (
+                    SELECT
+                        @prev_val := ' ' ,@count := 0
+                ) as tmp");
+
+        return response()->json($result);
     }
 
     public function save(Request $rank)
