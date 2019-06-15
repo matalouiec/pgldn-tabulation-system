@@ -74,6 +74,8 @@ Vue.component('data-contestant-tile', require('./components/DataController/Conte
 Vue.component('top-five', require('./components/TopFive/TopFiveComponent.vue').default);
 Vue.component('contestant-list', require('./components/TopFive/ContestantList.vue').default);
 
+//Rank
+Vue.component('rank', require('./components/Rank/RankComponent.vue').default);
 
 //Reports
 Vue.component('per-category-report', require('./components/Reports/CategoryReportComponent.vue').default);

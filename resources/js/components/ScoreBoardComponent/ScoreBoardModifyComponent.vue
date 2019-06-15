@@ -31,17 +31,11 @@
                     :alt="rating.name"
                   >
                   <br>
-                  <span class="label label-primary">Name</span> :
                   <span class="label label-warning">{{ rating.name }}</span>
                   <br>
-                  <span class="label label-primary">Age</span> :
                   <span class="label label-warning">{{ rating.age }} years old</span>
                   <br>
-                  <span class="label label-primary">Representing</span> :
                   <span class="label label-warning">{{ rating.representing }}</span>
-                  <br>
-                  <span class="label label-primary">Address</span> :
-                  <span class="label label-warning">{{ rating.short_description }}</span>
                 </center>
               </div>
               <div class="col-md-8">

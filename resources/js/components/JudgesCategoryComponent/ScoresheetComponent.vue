@@ -42,10 +42,6 @@
                         <td style="font-weight:bold;">Representing :</td>
                         <td style="color:red;">{{ contestant.representing }}</td>
                       </tr>
-                      <tr>
-                        <td style="font-weight:bold;">Age :</td>
-                        <td style="color:red;">{{ contestant.age }}</td>
-                      </tr>
                     </table>
                   </center>
                 </div>
