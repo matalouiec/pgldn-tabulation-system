@@ -112,6 +112,7 @@ Route::post('/rating/change-state', 'RatingController@toggleRatingState')->middl
 Route::get('/top-five', 'TopFiveController@index')->middleware('auth');
 
 // Rank Routes
+Route::post('/api/finals/topcandidates', 'RankController@saveFinalist')->middleware('auth');
 Route::post('/api/finals/rank', 'RankController@save')->middleware('auth');
 Route::get('/api/finals/rank', 'RankController@index')->middleware('auth');
 Route::view('/finalist-ranking', 'admin.rank.index')->middleware('auth');

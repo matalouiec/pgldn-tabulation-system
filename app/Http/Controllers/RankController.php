@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Rank;
+use App\Finalist;
 use function GuzzleHttp\json_decode;
 
 class RankController extends Controller
@@ -112,6 +113,21 @@ class RankController extends Controller
             return response()->json(['status' => true]);
         } else {
             return response()->json(['status' => false]);
+        }
+    }
+
+    public function saveFinalist(Request $candidates)
+    {
+        $data = $candidates->payload;
+        try {
+            foreach ($data as $d) {
+                $f = new Finalist;
+                $f->contestantid = $d['id'];
+                $f->save();
+            }
+            return response()->json(['code' => 201]);
+        } catch (Exception $e) {
+            return response()->json(['code' => 500]);
         }
     }
 }

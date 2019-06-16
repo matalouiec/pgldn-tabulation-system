@@ -23,7 +23,7 @@
                 <tbody>
                   <tr v-for="rank in rankList" :key="rank.id">
                     <td class="text-center">
-                      <b-form-checkbox name="contestant"></b-form-checkbox>
+                      <b-form-checkbox v-model="selectedCandidates" :value="rank" :name="rank.name"></b-form-checkbox>
                     </td>
                     <td class="text-left">#{{ rank.number }} - {{ rank.name }}</td>
                     <td class="text-center">{{ rank.fc }}</td>
@@ -35,8 +35,62 @@
                     <th class="text-center" scope="row">{{ rank.counter }}</th>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="9">
+                      <button
+                        class="btn btn-success float-sm-right"
+                        data-toggle="modal"
+                        data-target="#finalistModal"
+                      >Proceed to finals</button>
+                    </td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="finalistModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="finalistModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div v-if="xcount>0" class="modal-header">
+            <h5 class="modal-title" id="finalistModalLabel">Confirm Finalist</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div v-if="xcount>0" class="modal-body">
+            Top {{ xcount }} candidates who will proceed to the finals:
+            <br>
+            <ul>
+              <b>
+                <li
+                  v-for="candidate in selectedCandidates"
+                  :key="candidate.id"
+                >#{{ candidate.number }} - {{ candidate.name }} ({{ candidate.T }})</li>
+              </b>
+            </ul>Previous records will be overwritten. Are you sure?
+          </div>
+          <div v-else class="modal-body">
+            <h2>Please select at least one candidate.</h2>
+          </div>
+          <div v-if="xcount>0" class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              v-on:click="saveTopFinalist"
+              data-dismiss="modal"
+            >YES</button>
           </div>
         </div>
       </div>
@@ -49,7 +103,8 @@ import { setInterval } from "timers";
 export default {
   data() {
     return {
-      rankList: []
+      rankList: [],
+      selectedCandidates: []
     };
   },
   methods: {
@@ -58,9 +113,32 @@ export default {
         .get("/api/finals/rank")
         .then(response => {
           this.rankList = response.data;
-          console.log(response.data);
         })
         .catch(err => console.log(err));
+    },
+    saveTopFinalist() {
+      axios
+        .post("/api/finals/topcandidates", { payload: this.selectedCandidates })
+        .then(response => {
+          if (response.data.code == 201) {
+            this.$notify({
+              group: "app-notification",
+              type: "success",
+              title: "Success!!!",
+              text: "Success."
+            });
+          } else {
+            this.$notify({
+              group: "app-notification",
+              type: "error",
+              title: "Failed!!!",
+              text: "Failed."
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -68,6 +146,11 @@ export default {
     setInterval(() => {
       this.fetchRank();
     }, 2000);
+  },
+  computed: {
+    xcount: function() {
+      return this.selectedCandidates.length;
+    }
   }
 };
 </script>
