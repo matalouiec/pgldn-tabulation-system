@@ -19,51 +19,60 @@ class JudgeDashboard extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        return view('judges.dashboard');
-    }
-
-    public function getActiveCategory(){
+    public function getActiveCategory()
+    {
         $userid = Auth::id();
-        $categories = Category::where('is_active',1)->where('levelid',3)->get();
+        $categories = Category::where('is_active', 1)->get();
         $data['categories'] = [];
-
         foreach ($categories as $key => $value) {
-            $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid)',['judgeid' => $userid,'categoryid' => $categories[$key]->id]);
-            $categories[$key]['contestants'] = $contestant;
-            array_push($data['categories'],$categories[$key]);
+            switch ($categories[$key]->levelid) {
+                case 1:
+                    $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid) and c.id in (SELECT f.contestantid from finalist f)', ['judgeid' => $userid, 'categoryid' => $categories[$key]->id]);
+                    $categories[$key]['contestants'] = $contestant;
+                    array_push($data['categories'], $categories[$key]);
+                    break;
+
+                case 3:
+                    $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid)', ['judgeid' => $userid, 'categoryid' => $categories[$key]->id]);
+                    $categories[$key]['contestants'] = $contestant;
+                    array_push($data['categories'], $categories[$key]);
+                    break;
+            }
         }
         return response()->json($data);
     }
 
-    public function getActiveFinalCategory(){
+    public function getActiveFinalCategory()
+    {
         $userid = Auth::id();
-        $categories = Category::where('is_active',1)->where('levelid',1)->get();
+        $categories = Category::where('is_active', 1)->where('levelid', 1)->get();
         $data['categories'] = [];
 
         foreach ($categories as $key => $value) {
-            $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid) and c.id in (SELECT f.contestantid from finalist f)',['judgeid' => $userid,'categoryid' => $categories[$key]->id]);
+            $contestant = DB::select('SELECT c.* from contestant c where c.id not in (SELECT r.contestantid FROM rating r WHERE r.judgeid =:judgeid AND r.categoryid =:categoryid) and c.id in (SELECT f.contestantid from finalist f)', ['judgeid' => $userid, 'categoryid' => $categories[$key]->id]);
             $categories[$key]['contestants'] = $contestant;
-            array_push($data['categories'],$categories[$key]);
+            array_push($data['categories'], $categories[$key]);
         }
         return response()->json($data);
     }
 
-    public function show(Category $category){
+    public function show(Category $category)
+    {
         $category = Category::find($category->id);
         $criterias = Category::find($category->id)->criterias;
         $contestants = Contestant::all();
-        
+
         $data = array(
             'category' => $category,
             'criterias' => $criterias,
             'contestants' => $contestants
         );
 
-        return view('judges.category')->with('data',$data);
+        return view('judges.category')->with('data', $data);
     }
 
-    public function getCriteria(Category $category){
+    public function getCriteria(Category $category)
+    {
         $data['criterias'] = Category::find($category->id)->criterias;
         return response()->json($data);
     }
@@ -73,8 +82,9 @@ class JudgeDashboard extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-    */
-    public function createRatingHeader(Request $request){
+     */
+    public function createRatingHeader(Request $request)
+    {
         $userid = Auth::user()->id;
         $result = $request->payload;
         $category = $result['category'];
@@ -82,12 +92,11 @@ class JudgeDashboard extends Controller
         //$score = $result['score'];
         $totalScore = $result['totalScore'];
 
-        $count = Rating::where('judgeid',$userid)
-                            ->where('contestantid',$contestant['id'])
-                            ->where('categoryid',$category['id'])
-                            ->count();
-        if($count == 0)
-        {
+        $count = Rating::where('judgeid', $userid)
+            ->where('contestantid', $contestant['id'])
+            ->where('categoryid', $category['id'])
+            ->count();
+        if ($count == 0) {
             $rating = new Rating;
             $rating->judgeid = $userid;
             $rating->categoryid = $category['id'];
@@ -96,41 +105,37 @@ class JudgeDashboard extends Controller
             $rating->save();
 
             $data['id'] = $rating->id; //return the id of the last inserted data
-        }
-        else
-        {
-            $rating = Rating::where('judgeid',$userid)
-                            ->where('contestantid',$contestant['id'])
-                            ->where('categoryid',$category['id'])
-                            ->first();
+        } else {
+            $rating = Rating::where('judgeid', $userid)
+                ->where('contestantid', $contestant['id'])
+                ->where('categoryid', $category['id'])
+                ->first();
 
             $row = Rating::find($rating->id);
             $row->totalrating = $totalScore;
             $row->save();
-            
+
             $data['id'] = $rating->id;
         }
 
-        $this->saveRatingEntries($result,$data); // saving scores to the database
+        $this->saveRatingEntries($result, $data); // saving scores to the database
         return response()->json($data);
     }
 
-    private function saveRatingEntries(array $payload,array $headerId)
+    private function saveRatingEntries(array $payload, array $headerId)
     {
         $userid = Auth::user()->id;
         $category = $payload['category'];
         $contestant = $payload['contestant'];
         $scores = $payload['score'];
-        
-        $count = RatingEntry::where('parentid',$headerId['id'])
-                            ->where('judgeid',$userid)
-                            ->where('categoryid',$category['id'])
-                            ->count();
 
-        if($count==0)
-        {
-            foreach ($scores as $score) 
-            {
+        $count = RatingEntry::where('parentid', $headerId['id'])
+            ->where('judgeid', $userid)
+            ->where('categoryid', $category['id'])
+            ->count();
+
+        if ($count == 0) {
+            foreach ($scores as $score) {
                 $entry = new RatingEntry;
                 $entry->parentid = $headerId['id'];
                 $entry->judgeid = $userid;

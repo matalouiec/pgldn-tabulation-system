@@ -113,7 +113,7 @@
               type="button"
               class="btn btn-primary"
               data-dismiss="modal"
-            >Save and Close</button>
+            >Save</button>
           </div>
         </div>
       </div>
