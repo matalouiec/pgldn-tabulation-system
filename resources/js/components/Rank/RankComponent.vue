@@ -16,7 +16,7 @@
                     <th class="text-center" scope="col">Swim Wear</th>
                     <th class="text-center" scope="col">Maranao Inspired Gown</th>
                     <th class="text-center" scope="col">Preliminary</th>
-                    <th class="text-center" scope="col">Total</th>
+                    <th class="text-center" scope="col">Average Score</th>
                     <th class="text-center" scope="col">Rank</th>
                   </tr>
                 </thead>
@@ -25,7 +25,7 @@
                     <td class="text-center">
                       <b-form-checkbox v-model="selectedCandidates" :value="rank" :name="rank.name"></b-form-checkbox>
                     </td>
-                    <td class="text-left">#{{ rank.number }} - {{ rank.name }}</td>
+                    <td class="text-left"><b>#{{ rank.number }} - {{ rank.name }}</b><br /><sub>({{ rank.representing }})</sub></td>
                     <td class="text-center">{{ rank.fc }}</td>
                     <td class="text-center">{{ rank.cd }}</td>
                     <td class="text-center">{{ rank.sw }}</td>
@@ -154,3 +154,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+sub{
+  font-size: 13px;
+}
+</style>

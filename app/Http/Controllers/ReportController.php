@@ -94,6 +94,7 @@ class ReportController extends Controller
                     SELECT
                         xxx.contestantid,
                         xxx.categoryid,
+                        xxx.representing,
                         xxx.Contestants,
                         SUM(CASE WHEN xxx.Judges=1 THEN xxx.row_number END) as `Judge1`,
                         SUM(CASE WHEN xxx.Judges=3 THEN xxx.row_number END) as `Judge2`,
@@ -106,6 +107,7 @@ class ReportController extends Controller
                                 SELECT
                                     xx.contestantid,
                                     xx.categoryid,
+                                    xx.representing,
                                     xx.Contestants,
                                     xx.TOTAL,
                                     @row_number := CASE

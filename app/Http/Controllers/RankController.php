@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Rank;
 use App\Finalist;
+use App\Category;
 use function GuzzleHttp\json_decode;
 
 class RankController extends Controller
@@ -22,6 +23,7 @@ class RankController extends Controller
 
     public function index()
     {
+        $exclude = Category::where('levelid',1)->first();
         $result = DB::select("SELECT
             CASE
             WHEN @prev_val = y.T THEN
@@ -36,6 +38,7 @@ class RankController extends Controller
                         x.id,
                         x.number,
                         x.`name`,
+                        x.representing,
                         sum(
                             CASE
                             WHEN x.categoryid = 15 THEN
@@ -73,11 +76,13 @@ class RankController extends Controller
                                 c.id,
                                 c.number,
                                 c.`name`,
+                                c.representing,
                                 r.rank,
                                 r.categoryid
                             FROM
                                 ranks r
                             INNER JOIN contestant c ON r.contestantid = c.id
+                            WHERE r.categoryid!=$exclude->id
                         )AS x
                     GROUP BY
                         x.id
@@ -120,6 +125,7 @@ class RankController extends Controller
     {
         $data = $candidates->payload;
         try {
+            Finalist::truncate();
             foreach ($data as $d) {
                 $f = new Finalist;
                 $f->contestantid = $d['id'];
