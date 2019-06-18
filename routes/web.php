@@ -109,7 +109,7 @@ Route::get('/data-controller/category/{id}', 'CategoryController@getCategoriesBy
 Route::post('/rating/change-state', 'RatingController@toggleRatingState')->middleware('auth');
 
 // Top 5 Finalist
-Route::get('/top-five', 'TopFiveController@index')->middleware('auth');
+//Route::get('/top-five', 'TopFiveController@index')->middleware('auth');
 
 // Rank Routes
 Route::post('/api/finals/topcandidates', 'RankController@saveFinalist')->middleware('auth');
