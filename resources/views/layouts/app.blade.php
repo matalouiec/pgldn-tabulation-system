@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/material-icons.min.css') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('storage/style/bootstrap.material.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -46,7 +47,6 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Masterdata</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('/top-five') }}">Top 5</a>
                                 <a class="dropdown-item" href="{{ url('/category') }}">Category</a>
                                 <a class="dropdown-item" href="{{ url('/contestant') }}">Contestants</a>
                                 <a class="dropdown-item" href="{{ url('/round') }}">Stages of Competition</a>
