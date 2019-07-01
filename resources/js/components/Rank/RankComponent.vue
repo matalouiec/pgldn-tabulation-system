@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">PRELIMINARY CATEGORY SCOREBOARD</div>
+          <div class="card-header">Top 5 Finalist</div>
           <div class="card-body">
             <div class="row">
               <table class="table table-bordered table-striped table-hover">
@@ -25,7 +25,11 @@
                     <td class="text-center">
                       <b-form-checkbox v-model="selectedCandidates" :value="rank" :name="rank.name"></b-form-checkbox>
                     </td>
-                    <td class="text-left"><b>#{{ rank.number }} - {{ rank.name }}</b><br /><sub>({{ rank.representing }})</sub></td>
+                    <td class="text-left">
+                      <b>#{{ rank.number }} - {{ rank.name }}</b>
+                      <br />
+                      <sub>({{ rank.representing }})</sub>
+                    </td>
                     <td class="text-center">{{ rank.fc }}</td>
                     <td class="text-center">{{ rank.cd }}</td>
                     <td class="text-center">{{ rank.sw }}</td>
@@ -47,6 +51,7 @@
                   </tr>
                 </tfoot>
               </table>
+              <p>Official Tabulator : ______________________________</p>
             </div>
           </div>
         </div>
@@ -70,7 +75,7 @@
           </div>
           <div v-if="xcount>0" class="modal-body">
             Top {{ xcount }} candidates who will proceed to the finals:
-            <br>
+            <br />
             <ul>
               <b>
                 <li
@@ -155,7 +160,7 @@ export default {
 };
 </script>
 <style scoped>
-sub{
+sub {
   font-size: 13px;
 }
 </style>
