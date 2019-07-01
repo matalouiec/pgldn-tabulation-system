@@ -18,6 +18,8 @@
               <th class="text-center">Judge 3</th>
               <th class="text-center">Judge 4</th>
               <th class="text-center">Judge 5</th>
+              <th class="text-center">Judge 6</th>
+              <th class="text-center">Judge 7</th>
               <th class="text-center">Total</th>
               <th class="text-center">Rank</th>
             </tr>
@@ -30,6 +32,8 @@
               <td class="text-center">{{ rank.Judge3 }}</td>
               <td class="text-center">{{ rank.Judge4 }}</td>
               <td class="text-center">{{ rank.Judge5 }}</td>
+              <td class="text-center">{{ rank.Judge6 }}</td>
+              <td class="text-center">{{ rank.Judge7 }}</td>
               <td class="text-center" style="color:green;">{{ rank.T }}</td>
               <th class="text-center" style="color:red;">{{ rank.counter }}</th>
             </tr>

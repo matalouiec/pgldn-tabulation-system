@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
@@ -16,7 +16,7 @@
         }
     </style>
     <script type="text/javascript">
-        
+
     </script>
 </head>
 <body>
@@ -53,7 +53,7 @@
                         <th class="text-center" rowspan="0">TOTAL (100%)</th>
                     </tr>
                     <tr>
-                        <th class="text-center">Intelligence (30%)</th>
+                        <th class="text-center">Intelligence (100%)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +76,7 @@
                     <b>{{ $data['judge']->name }}</b>
                     <br />
                     <span style="text-decoration:overline;">
-                        Judge's Signature over Printed Name
+                        Signature over Printed Name
                     </span>
                 </center>
             </div>

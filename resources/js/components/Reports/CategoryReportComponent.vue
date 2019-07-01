@@ -8,18 +8,26 @@
         <th class="text-center">Judge 3</th>
         <th class="text-center">Judge 4</th>
         <th class="text-center">Judge 5</th>
+        <th class="text-center">Judge 6</th>
+        <th class="text-center">Judge 7</th>
         <th class="text-center">Total</th>
         <th class="text-center">Rank</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="result in resultset" :key="result.id">
-        <td><b>{{ result.Contestants }}</b><br/><sub>({{ result.representing }})</sub></td>
+        <td>
+          <b>{{ result.Contestants }}</b>
+          <br />
+          <sub>({{ result.representing }})</sub>
+        </td>
         <td class="text-center">{{ result.Judge1 }}</td>
         <td class="text-center">{{ result.Judge2 }}</td>
         <td class="text-center">{{ result.Judge3 }}</td>
         <td class="text-center">{{ result.Judge4 }}</td>
         <td class="text-center">{{ result.Judge5 }}</td>
+        <td class="text-center">{{ result.Judge6 }}</td>
+        <td class="text-center">{{ result.Judge7 }}</td>
         <td class="text-center">{{ result.T }}</td>
         <th scope="row" class="text-center" style="font-size:15px;">{{ result.counter }}</th>
       </tr>
@@ -53,7 +61,7 @@ export default {
 };
 </script>
 <style scoped>
-sub{
+sub {
   font-size: 12px;
 }
 </style>

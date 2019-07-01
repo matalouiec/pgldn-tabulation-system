@@ -101,6 +101,8 @@ class ReportController extends Controller
                         SUM(CASE WHEN xxx.Judges=4 THEN xxx.row_number END) as `Judge3`,
                         SUM(CASE WHEN xxx.Judges=5 THEN xxx.row_number END) as `Judge4`,
                         SUM(CASE WHEN xxx.Judges=6 THEN xxx.row_number END) as `Judge5`,
+                        SUM(CASE WHEN xxx.Judges=7 THEN xxx.row_number END) as `Judge6`,
+                        SUM(CASE WHEN xxx.Judges=8 THEN xxx.row_number END) as `Judge7`,
                         SUM(xxx.row_number) as `T`
                     FROM
                         (
@@ -144,7 +146,15 @@ class ReportController extends Controller
                                 CASE
                                 WHEN xx.Judge = 6 THEN
                                     @row_number
-                                END AS `Judge_5`
+                                END AS `Judge_5`,
+                                CASE
+                                WHEN xx.Judge = 7 THEN
+                                    @row_number
+                                END AS `Judge_6`,
+                                CASE
+                                WHEN xx.Judge = 8 THEN
+                                    @row_number
+                                END AS `Judge_7`
                                 FROM
                                     $vw_name AS xx,
                                     (

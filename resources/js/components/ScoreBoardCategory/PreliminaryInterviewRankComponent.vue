@@ -21,7 +21,7 @@
               <th
                 class="text-center"
                 title="Intelligence (Content, Grammar & Pronunciation)"
-              >Intelligence (Content, Grammar & Pronunciation) (30%)</th>
+              >Intelligence (Content, Grammar & Pronunciation) (100%)</th>
             </tr>
           </thead>
           <tbody>
