@@ -37,10 +37,10 @@
                                     <td>
                                         <a href="/category/{{$category->id}}" class="btn btn-success btn-sm" >Criteria</a>
                                         <a href="/category/{{$category->id}}/edit" class='btn btn-info btn-sm'>Edit</a>
-                                        {!!Form::open(['action' => ['CategoryController@destroy',$category->id],'method' => 'POST','class' => 'btn btn-sm'])!!}
+                                        {{-- {!!Form::open(['action' => ['CategoryController@destroy',$category->id],'method' => 'POST','class' => 'btn btn-sm'])!!}
                                             {{Form::hidden('_method','DELETE')}}
                                             {{Form::submit('Delete',['class'=>'btn btn-danger btn-sm','onclick'=>'Confirm(Are you sure?)'])}}
-                                        {!!Form::close()!!}
+                                        {!!Form::close()!!} --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -58,7 +58,7 @@
 <!-- Modal -->
 <div id="modalCriteria" class="modal fade" role="dialog">
         <div class="modal-dialog">
-      
+
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
@@ -83,7 +83,7 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-      
+
         </div>
 </div>
 @endsection
@@ -107,7 +107,7 @@
                     var items = [];
                     $.each(data,function(key,val){
                         items.push("<tr>");
-                        items.push("<td id="+ key +">"+ val.criteria_name +"</td><td>"+ val.percentage +" %</td>");                     
+                        items.push("<td id="+ key +">"+ val.criteria_name +"</td><td>"+ val.percentage +" %</td>");
                         items.push("</tr>");
                     });
                     $("#criteria").html(items);
