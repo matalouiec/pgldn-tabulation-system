@@ -51,6 +51,13 @@
                   </tr>
                 </tfoot>
               </table>
+              <ul>
+                <li
+                  style="margin-top:5px;"
+                  v-for="judge in judgesList"
+                  :key="judge.id"
+                >{{ judge.name }} : ______________________________</li>
+              </ul>
               <p>Official Tabulator : ______________________________</p>
             </div>
           </div>
@@ -109,10 +116,21 @@ export default {
   data() {
     return {
       rankList: [],
+      judgesList: [],
       selectedCandidates: []
     };
   },
   methods: {
+    fetchJudges() {
+      axios
+        .get("/judges")
+        .then(res => {
+          this.judgesList = res.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     fetchRank() {
       axios
         .get("/api/finals/rank")
@@ -148,6 +166,7 @@ export default {
   },
   mounted() {
     this.fetchRank();
+    this.fetchJudges();
     setInterval(() => {
       this.fetchRank();
     }, 2000);
