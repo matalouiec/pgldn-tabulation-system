@@ -26,11 +26,11 @@
                 class="text-center"
                 title="Ethnicity of Materials used"
               >Ethnicity of Materials (30%)</th>
-              <th class="text-center" title="Fitness of the Attire">Fitness of the Attire (20%)</th>
+              <th class="text-center" title="Fitness of the Attire">Fitness of the Attire (15%)</th>
               <th
                 class="text-center"
                 title="Confidence/ Poise/ Projection"
-              >Confidence/ Poise/ Projection (10%)</th>
+              >Confidence/ Poise/ Projection (15%)</th>
             </tr>
           </thead>
           <tbody>

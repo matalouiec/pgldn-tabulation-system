@@ -11,14 +11,11 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/storage/img/beauty.jpg"); */
-                /* background-color: #dcf1d6; */
-                background-position: center center;  
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                background-image: url("/storage/img/backdrop.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-color: black;
+                background-position: center center;
             }
 
             .full-height {
@@ -45,52 +42,25 @@
                 text-align: center;
             }
 
-            .title {
-                font-size: 90px;
-                color:#ff2015;
-                font-weight:bold;
-                font-family: serif;
-                font-style:italic;
-            }
-            .subtitle {
-                font-size: 30px;
-                color:black;
-                font-weight:bold;
-                font-family: serif;
-                font-style:italic;
-                text-align:left;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            .btn{
+                position: absolute;
+                bottom: 2%;
+                width: 180px;
+                margin: auto;
+                right: auto;
+                left: 45%;
             }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="subtitle">
-                    Search for
-                </div>
-                <div class="title m-b-md">
-                    Miss Lanao del Norte 2019<br />
-                </div>
                 @if (Route::has('login'))
                     <div class="start">
                         @auth
-                            <a class="btn btn-primary btn-lg" role="button" href="{{ url('/dashboard') }}">SCORE CARD</a>   
+                            <a class="btn btn-success btn-lg" role="button" href="{{ url('/dashboard') }}">SCORE CARD</a>
                         @else
-                            <a class="btn btn-primary btn-lg" role="button" href="{{ route('login') }}">LOG IN</a>
+                            <a class="btn btn-success btn-lg" role="button" href="{{ route('login') }}">LOG IN</a>
                         @endauth
                     </div>
                 @endif

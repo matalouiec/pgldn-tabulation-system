@@ -55,8 +55,8 @@
                     <tr>
                         <th class="text-center">Creativity (40%)</th>
                         <th class="text-center">Ethnicity of materials used (30%)</th>
-                        <th class="text-center">Fitness of the attire (20%)</th>
-                        <th class="text-center">Confidence (10%)</th>
+                        <th class="text-center">Fitness of the attire (15%)</th>
+                        <th class="text-center">Confidence (15%)</th>
                     </tr>
                 </thead>
                 <tbody>
