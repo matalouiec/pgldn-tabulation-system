@@ -34,7 +34,7 @@
     "autoprefixer": "^9.6.0",
     "bootstrap-toggle": "^2.2.2",
     "bootstrap-vue": "^2.0.0-rc.22",
-    "postcss": "^7.0.17",
+    "postcss": "^7.0.36",
     "postcss-selector-parser": "^6.0.2",
     "vee-validate": "^2.2.7",
     "vue-loader": "^15.7.0",
